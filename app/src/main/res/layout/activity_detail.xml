@@ -12,7 +12,70 @@
         android:id="@+id/img_detail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_180sdp"
+        android:padding="@dimen/_4sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitCenter"
+        tools:src="@drawable/john_wick_chapter_3_parabellum"/>
+
+    <TextView
+        android:id="@+id/tv_watch_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_8sdp"
+        app:layout_constraintStart_toStartOf="@id/img_detail"
+        app:layout_constraintBottom_toBottomOf="@+id/img_detail"
+        android:background="@color/text_background"
+        android:textSize="@dimen/_14ssp"
+        android:text="@string/play"
+        android:fontFamily="@font/roboto_mono_bold"
+        android:textColor="@color/white"
+        app:drawableLeftCompat="@drawable/ic_play"/>
+
+    <TextView
+        android:id="@+id/tv_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        app:layout_constraintTop_toBottomOf="@id/img_detail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/_18ssp"
+        android:fontFamily="@font/roboto_mono_bold"
+        android:textColor="@color/white"
+        tools:text="John Wick: Chapter 3 - Parabellum"/>
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        android:text="@string/description"
+        android:fontFamily="@font/roboto_medium"/>
+
+    <TextView
+        android:id="@+id/tv_detail_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:fontFamily="@font/roboto_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        tools:text="Lorem ipsum sit amet dolor"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
