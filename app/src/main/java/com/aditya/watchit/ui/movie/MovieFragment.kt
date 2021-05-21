@@ -43,19 +43,11 @@ class MovieFragment : Fragment() {
             movieAdapter.setListFilm(listMovie)
 
             movieAdapter.setOnItemClickedCallback(object : OnClickedItem{
-                override fun onClickedItemCallback(filmModel: FilmModel, imageView: View) {
-                    val imagePair = Pair.create(imageView, DetailActivity.EXTRA_IMAGE_TRANSITION)
-
+                override fun onClickedItemCallback(filmModel: FilmModel) {
                     val intent = Intent(context, DetailActivity::class.java).apply {
                         putExtra(DetailActivity.EXTRA_DATA, filmModel)
                     }
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        val activityOption = ActivityOptions.makeSceneTransitionAnimation(activity, imagePair)
-                        startActivity(intent, activityOption.toBundle())
-                    } else {
-                        startActivity(intent)
-                    }
+                    startActivity(intent)
                 }
             })
         }

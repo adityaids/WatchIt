@@ -41,7 +41,7 @@ class TvSeriesAdapter: RecyclerView.Adapter<TvSeriesAdapter.TvViewHolder>(){
                     .into(binding.imgFilm)
                 binding.tvTitleFilm.text = filmModel.title
                 binding.tvDescriptionFilm.text = filmModel.description
-                itemView.setOnClickListener { onItemClick.onClickedItemCallback(filmModel, binding.imgFilm) }
+                itemView.setOnClickListener { onItemClick.onClickedItemCallback(filmModel) }
             }
     }
 }

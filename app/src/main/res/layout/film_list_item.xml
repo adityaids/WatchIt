@@ -6,8 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:backgroundTint="@color/light_background"
     android:layout_marginTop="@dimen/_4sdp"
-    android:layout_marginStart="@dimen/_4sdp"
-    android:layout_marginEnd="@dimen/_4sdp"
     app:cardCornerRadius="@dimen/_8sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,8 +20,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:transitionName="extra_image_transition"
-            android:scaleType="centerCrop"
             tools:src="@drawable/avenger_end_game"/>
 
         <TextView
@@ -34,6 +30,7 @@
             android:layout_marginTop="@dimen/_4sdp"
             app:layout_constraintStart_toEndOf="@+id/img_film"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
             android:ellipsize="end"
@@ -45,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/_8sdp"
             app:layout_constraintStart_toEndOf="@+id/img_film"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_film"

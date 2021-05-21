@@ -13,4 +13,5 @@
     <color name="dark_background">#181832</color>
     <color name="light_background">#F3414673</color>
     <color name="text_background">#A3434343</color>
+    <color name="text_secondary">#938B8B</color>
 </resources>

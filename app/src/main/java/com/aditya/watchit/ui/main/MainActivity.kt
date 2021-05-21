@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val viewpager = Viewpager(this, supportFragmentManager)
+        binding.viewPager.adapter = viewpager
+        binding.tabs.setupWithViewPager(binding.viewPager)
+        supportActionBar?.elevation = 0f
+
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
         binding.rvPopular.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
@@ -35,19 +40,11 @@ class MainActivity : AppCompatActivity() {
         popularAdapter.setPopularFilm(popularList)
 
         popularAdapter.setOnItemClick(object : OnClickedItem{
-            override fun onClickedItemCallback(filmModel: FilmModel, imageView: View) {
-                val imagePair = Pair.create(imageView, DetailActivity.EXTRA_IMAGE_TRANSITION)
-
+            override fun onClickedItemCallback(filmModel: FilmModel) {
                 val intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
                     putExtra(DetailActivity.EXTRA_DATA, filmModel)
                 }
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    val activityOption = ActivityOptions.makeSceneTransitionAnimation(this@MainActivity, imagePair)
-                    startActivity(intent, activityOption.toBundle())
-                } else {
-                    startActivity(intent)
-                }
+                startActivity(intent)
             }
         })
     }
