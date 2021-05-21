@@ -17,10 +17,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="fitCenter"
+        android:transitionName="extra_image_transition"
         tools:src="@drawable/john_wick_chapter_3_parabellum"/>
 
     <TextView
-        android:id="@+id/tv_watch_count"
+        android:id="@+id/tv_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_4sdp"

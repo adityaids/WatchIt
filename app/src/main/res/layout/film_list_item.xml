@@ -22,6 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:transitionName="extra_image_transition"
             android:scaleType="centerCrop"
             tools:src="@drawable/avenger_end_game"/>
 

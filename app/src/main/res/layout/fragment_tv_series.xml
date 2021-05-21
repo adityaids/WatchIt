@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_8sdp"
-    tools:context=".ui.main.TvSeriesFragment">
+    tools:context=".ui.tv.TvSeriesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_tv_series"
