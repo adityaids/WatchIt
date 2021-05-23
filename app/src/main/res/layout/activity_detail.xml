@@ -79,7 +79,6 @@
             android:textSize="@dimen/_12ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_description"
-            tools:text="Lorem ipsum sit amet dolor"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_description"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
