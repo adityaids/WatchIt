@@ -1,12 +1,8 @@
 package com.aditya.watchit.ui.main
 
-import android.app.ActivityOptions
 import android.content.Intent
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Pair
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditya.watchit.data.FilmModel
@@ -26,8 +22,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewpager = Viewpager(this, supportFragmentManager)
-        binding.viewPager.adapter = viewpager
-        binding.tabs.setupWithViewPager(binding.viewPager)
+        binding.viewpager.adapter = viewpager
+        binding.tabs.setupWithViewPager(binding.viewpager)
         supportActionBar?.elevation = 0f
 
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)

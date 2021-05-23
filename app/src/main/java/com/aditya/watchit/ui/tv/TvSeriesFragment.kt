@@ -1,17 +1,13 @@
 package com.aditya.watchit.ui.tv
 
-import android.app.ActivityOptions
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.util.Pair
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aditya.watchit.R
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
 import com.aditya.watchit.databinding.FragmentTvSeriesBinding

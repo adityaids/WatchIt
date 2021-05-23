@@ -32,6 +32,7 @@ class MainActivityTest{
         onView(withId(R.id.rv_popular)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
         onView(withId(R.id.tv_detail_title)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         onView(withId(R.id.tv_detail_title)).check(ViewAssertions.matches(withText(dummyMovie[0].title)))
+        onView(withId(R.id.tv_type)).check(ViewAssertions.matches(withText(dummyMovie[0].type)))
         onView(withId(R.id.tv_detail_description)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         onView(withId(R.id.tv_detail_description)).check(ViewAssertions.matches(withText(dummyMovie[0].description)))
     }
@@ -54,6 +55,7 @@ class MainActivityTest{
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
         onView(withId(R.id.tv_detail_title)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         onView(withId(R.id.tv_detail_title)).check(ViewAssertions.matches(withText(dummyMovie[0].title)))
+        onView(withId(R.id.tv_type)).check(ViewAssertions.matches(withText(dummyMovie[0].type)))
         onView(withId(R.id.tv_detail_description)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         onView(withId(R.id.tv_detail_description)).check(ViewAssertions.matches(withText(dummyMovie[0].description)))
     }
@@ -64,6 +66,7 @@ class MainActivityTest{
         onView(withId(R.id.rv_tv_series)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
         onView(withId(R.id.tv_detail_title)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         onView(withId(R.id.tv_detail_title)).check(ViewAssertions.matches(withText(dummyTv[0].title)))
+        onView(withId(R.id.tv_type)).check(ViewAssertions.matches(withText(dummyTv[0].type)))
         onView(withId(R.id.tv_detail_description)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         onView(withId(R.id.tv_detail_description)).check(ViewAssertions.matches(withText(dummyTv[0].description)))
     }

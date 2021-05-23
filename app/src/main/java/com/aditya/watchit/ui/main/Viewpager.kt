@@ -5,9 +5,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.aditya.watchit.R
-import com.aditya.watchit.ui.movie.MovieAdapter
 import com.aditya.watchit.ui.movie.MovieFragment
 import com.aditya.watchit.ui.tv.TvSeriesFragment
 
@@ -24,7 +22,7 @@ class Viewpager(private val mContext: Context, fm: FragmentManager): FragmentPag
             else -> Fragment()
         }
 
-    override fun getPageTitle(position: Int): CharSequence? = mContext.resources.getString(TAB_TITLES[position])
+    override fun getPageTitle(position: Int): CharSequence = mContext.resources.getString(TAB_TITLES[position])
 
     override fun getCount(): Int = 2
 }

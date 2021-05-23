@@ -8,7 +8,6 @@ import com.bumptech.glide.Glide
 
 class DetailActivity : AppCompatActivity() {
     companion object{
-        const val EXTRA_IMAGE_TRANSITION: String = "extra_image_transition"
         const val EXTRA_DATA: String = "extra_data"
     }
     private lateinit var filmModel: FilmModel
