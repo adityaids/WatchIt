@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
         popularAdapter.setPopularFilm(popularList)
 
         popularAdapter.setOnItemClick(object : OnClickedItem{
-            override fun onClickedItemCallback(filmName: String) {
+            override fun onClickedItemCallback(filmModel: FilmModel) {
                 val intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
-                    putExtra(DetailActivity.EXTRA_DATA, filmName)
+                    putExtra(DetailActivity.EXTRA_DATA, filmModel)
                 }
                 startActivity(intent)
             }

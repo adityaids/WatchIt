@@ -13,6 +13,7 @@ class DetailActivity : AppCompatActivity() {
     }
     private lateinit var binding: ActivityDetailBinding
     private lateinit var detailViewModel: DetailViewModel
+    private lateinit var filmModel: FilmModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +22,9 @@ class DetailActivity : AppCompatActivity() {
 
         detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
         if (intent.hasExtra(EXTRA_DATA)) {
-           val filmModel = intent.getStringExtra(EXTRA_DATA)
-            detailViewModel.setTitle(filmModel?:"-")
-            var film = detailViewModel.getFilm()
+           filmModel = intent.getParcelableExtra<FilmModel>(EXTRA_DATA) as FilmModel
+            detailViewModel.setTitle(filmModel.title, filmModel.type)
+            val film = detailViewModel.getFilm()
             PopulateFilm(film)
         }
     }

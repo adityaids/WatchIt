@@ -40,7 +40,7 @@ class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
                     .load(filmModel.banner)
                     .into(binding.imgPopular)
                 binding.tvTitle.text = filmModel.title
-                itemView.setOnClickListener {onItemClick.onClickedItemCallback(filmModel.title)}
+                itemView.setOnClickListener {onItemClick.onClickedItemCallback(filmModel)}
             }
     }
 }
