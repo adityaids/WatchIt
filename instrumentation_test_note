@@ -1,0 +1,32 @@
+Instrumentation Test Skenario
+
+- Menampilkan data popoular film
+    memastikan rv_popular dalam keadaan tampil
+    gulir rv_popular ke item terakhir
+
+- Menampilkan data detail popular film
+    memberikan tindakan klik pada item pertama rv_popular
+    memastikan data title tampil dan sesuai data yang di harapkan
+    memastikan data type tampil dan sesuai data yang di harapkan
+    memastikan data description tampil dan sesuai data yang di harapkan
+
+- Menampilkan data movie
+    memastikan rv_movie dalam keadaan tampil
+    gulir rv_movie ke item terakhir
+
+- Menampilkan data tv series
+    memberikan tindakan klik pada tab Tv series
+    memastikan rv_tv_series dalam keadaan tampil
+    gulir rv_tv_series ke item terakhir
+
+- Menampilkan data detail movie
+    memberikan tindakan klik pada item pertama rv_movie
+    memastikan data title tampil dan sesuai data yang di harapkan
+    memastikan data type tampil dan sesuai data yang di harapkan
+    memastikan data description tampil dan sesuai data yang di harapkan
+
+- Menampilkan data detail movie
+    memberikan tindakan klik pada item pertama rv_tv_series
+    memastikan data title tampil dan sesuai data yang di harapkan
+    memastikan data type tampil dan sesuai data yang di harapkan
+    memastikan data description tampil dan sesuai data yang di harapkan
