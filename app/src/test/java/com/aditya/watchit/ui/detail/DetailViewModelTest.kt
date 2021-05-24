@@ -8,23 +8,38 @@ import org.junit.Test
 
 class DetailViewModelTest {
     private lateinit var viewModel: DetailViewModel
-    private val dummyFilm = DummyData.generateMovieDummy()[0]
-    private val title = dummyFilm.title
-    private val type = dummyFilm.type
+    private val dummyMovie = DummyData.generateMovieDummy()[0]
+    private val titleMovie = dummyMovie.title
+    private val typeMovie = dummyMovie.type
+    private val dummyTv = DummyData.generateTvDummy()[0]
+    private val titleTv = dummyTv.title
+    private val typeTv = dummyTv.type
+
+
     @Before
     fun setUp() {
         viewModel = DetailViewModel()
-        viewModel.setTitle(title, type)
     }
 
     @Test
-    fun getFilm() {
-        viewModel.setTitle(dummyFilm.title, dummyFilm.type)
+    fun getDetailMovie() {
+        viewModel.setTitle(dummyMovie.title, dummyMovie.type)
         val film = viewModel.getFilm()
         Assert.assertNotNull(film)
-        assertEquals(dummyFilm.title, film.title)
-        assertEquals(dummyFilm.type, film.type)
-        assertEquals(dummyFilm.description, film.description)
-        assertEquals(dummyFilm.banner, film.banner)
+        assertEquals(dummyMovie.title, film.title)
+        assertEquals(dummyMovie.type, film.type)
+        assertEquals(dummyMovie.description, film.description)
+        assertEquals(dummyMovie.banner, film.banner)
+    }
+
+    @Test
+    fun getDetailTv(){
+        viewModel.setTitle(dummyTv.title, dummyTv.type)
+        val tv = viewModel.getFilm()
+        Assert.assertNotNull(tv)
+        assertEquals(dummyTv.title, tv.title)
+        assertEquals(dummyTv.type, tv.type)
+        assertEquals(dummyTv.description, tv.description)
+        assertEquals(dummyTv.banner, tv.banner)
     }
 }
