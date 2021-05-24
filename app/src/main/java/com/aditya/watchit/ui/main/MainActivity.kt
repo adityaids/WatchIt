@@ -9,6 +9,7 @@ import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
 import com.aditya.watchit.databinding.ActivityMainBinding
 import com.aditya.watchit.ui.detail.DetailActivity
+import com.aditya.watchit.viewmodel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         binding.tabs.setupWithViewPager(binding.viewpager)
         supportActionBar?.elevation = 0f
 
-        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+        val factory = ViewModelFactory.getInstance(this)
+        mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
         binding.rvPopular.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)

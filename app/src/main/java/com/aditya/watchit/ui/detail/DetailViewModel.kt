@@ -1,10 +1,11 @@
 package com.aditya.watchit.ui.detail
 
 import androidx.lifecycle.ViewModel
+import com.aditya.watchit.data.DataRepository
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.utils.DummyData
 
-class DetailViewModel: ViewModel() {
+internal class DetailViewModel(private val repository: DataRepository): ViewModel() {
     private lateinit var title: String
     private lateinit var type: String
 

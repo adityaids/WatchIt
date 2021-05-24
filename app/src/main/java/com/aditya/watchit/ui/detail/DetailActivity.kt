@@ -3,8 +3,10 @@ package com.aditya.watchit.ui.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.aditya.watchit.data.DataRepository
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.databinding.ActivityDetailBinding
+import com.aditya.watchit.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 
 class DetailActivity : AppCompatActivity() {
@@ -20,7 +22,8 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
+        val factory = ViewModelFactory.getInstance(this)
+        detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
         if (intent.hasExtra(EXTRA_DATA)) {
            filmModel = intent.getParcelableExtra<FilmModel>(EXTRA_DATA) as FilmModel
             detailViewModel.setTitle(filmModel.title, filmModel.type)
