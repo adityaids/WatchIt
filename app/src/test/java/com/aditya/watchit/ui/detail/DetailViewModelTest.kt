@@ -19,6 +19,8 @@ class DetailViewModelTest {
     @Before
     fun setUp() {
         viewModel = DetailViewModel()
+        viewModel.setTitle(titleMovie, typeMovie)
+        viewModel.setTitle(titleTv, typeTv)
     }
 
     @Test
