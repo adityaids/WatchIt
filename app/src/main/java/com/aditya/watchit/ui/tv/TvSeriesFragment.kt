@@ -17,13 +17,14 @@ import com.aditya.watchit.ui.main.MainViewModel
 
 class TvSeriesFragment : Fragment() {
     private lateinit var binding: FragmentTvSeriesBinding
-    private val tvSeriesAdapter = TvSeriesAdapter()
+    private lateinit var tvSeriesAdapter: TvSeriesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTvSeriesBinding.inflate(layoutInflater, container, false)
+        tvSeriesAdapter = TvSeriesAdapter()
         binding.rvTvSeries.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)

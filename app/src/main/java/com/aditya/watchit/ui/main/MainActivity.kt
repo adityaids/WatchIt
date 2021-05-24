@@ -13,7 +13,7 @@ import com.aditya.watchit.ui.detail.DetailActivity
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
-    private val popularAdapter = PopularAdapter()
+    private lateinit var popularAdapter: PopularAdapter
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        popularAdapter = PopularAdapter()
         val viewpager = Viewpager(this, supportFragmentManager)
         binding.viewpager.adapter = viewpager
         binding.tabs.setupWithViewPager(binding.viewpager)

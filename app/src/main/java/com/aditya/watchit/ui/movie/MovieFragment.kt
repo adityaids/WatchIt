@@ -16,13 +16,14 @@ import com.aditya.watchit.ui.main.MainViewModel
 
 class MovieFragment : Fragment() {
     private lateinit var binding: FragmentMovieBinding
-    private val movieAdapter = MovieAdapter()
+    private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMovieBinding.inflate(layoutInflater, container, false)
+        movieAdapter = MovieAdapter()
         binding.rvMovie.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
