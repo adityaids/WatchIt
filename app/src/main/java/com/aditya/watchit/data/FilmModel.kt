@@ -8,5 +8,5 @@ data class FilmModel (
     var title: String,
     var type: String,
     var description: String,
-    var banner: Int
+    var banner: String
     ): Parcelable

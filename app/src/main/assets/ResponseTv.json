@@ -1,0 +1,64 @@
+{
+  "Popular": [
+    {
+      "title": "Black Mirror",
+      "type": "Tv Series",
+      "description": "Set in a world only minutes from our own, \"Black Mirror\" unveils how modern technologies can backfire and be used against their makers, every episode set in a slightly different reality with different characters combating different types of technologies.",
+      "image": "R.drawable.tv_black_mirror"
+    },
+    {
+      "title": "Bojack Horseman",
+      "type": "Tv Series",
+      "description": "After starring in the popular sitcom \\\"Horsin' Around\\\" in the late 80s and early 90s, BoJack Horseman struggles with his deteriorating popularity, depression, addiction, and maintaining the relationships with those he cares about, but can't seem to stop hurting, all while living in the satirical, pun-filled city of Hollywood, California.",
+      "image": "R.drawable.tv_bojack_horseman"
+    },
+    {
+      "title": "Breaking Bad",
+      "type": "Tv Series",
+      "description": "When chemistry teacher Walter White is diagnosed with Stage III cancer and given only two years to live, he decides he has nothing to lose. He lives with his teenage son, who has cerebral palsy, and his wife, in New Mexico. Determined to ensure that his family will have a secure future, Walt embarks on a career of drugs and crime. He proves to be remarkably proficient in this new world as he begins manufacturing and selling methamphetamine with one of his former students. The series tracks the impacts of a fatal diagnosis on a regular, hard working man, and explores how a fatal diagnosis affects his morality and transforms him into a major player of the drug trade.",
+      "image": "R.drawable.tv_breaking_bad"
+    },
+    {
+      "title": "Dear White People",
+      "type": "Tv Series",
+      "description": "At a predominantly white Ivy League college, a group of black students navigate various forms of racial and other types of discrimination.",
+      "image": "R.drawable.tv_dear_white_people"
+    },
+    {
+      "title": "Explained",
+      "type": "Tv Series",
+      "description": "A documentary series that looks to explore the big questions of today.",
+      "image": "R.drawable.tv_explained"
+    },
+    {
+      "title": "Orange is The New Black",
+      "type": "Tv Series",
+      "description": "Piper Chapman is a public relations executive with a career and a fiance when her past suddenly catches up to her. In her mid-30s she is sentenced to spend time in a minimum-security women's prison in New York for her association with a drug runner 10 years earlier. This Netflix original series is based on the book of the same title. Forced to trade power suits for prison orange, Chapman makes her way through the corrections system and adjusts to life behind bars, making friends with the many eccentric, unusual and unexpected people she meets.",
+      "image": "R.drawable.tv_orange_is_the_new_black"
+    },
+    {
+      "title": "Queer Eye",
+      "type": "Tv Series",
+      "description": "More than a decade after the original series went off the air, Netflix reboots the \"Queer Eye\" franchise with a new Fab Five and a new setting, trading in the concrete jungle of New York City for communities in and around Atlanta. The style experts forge relationships with men and women who often have different beliefs from them, leading to moments of social commentary interspersed with style advice. Advising people in need of lifestyle makeovers are food and wine specialist Antoni Porowski, interior designer Bobby Berk, grooming consultant Jonathan Van Ness, fashion designer Tan France and culture expert Karamo Brown, who reality TV fans may recognize as one of the housemates on \"The Real World (1992): Philadelphia.\" David Collins, who created the original Queer Eye (2003) show, is on board as an executive producer.",
+      "image": "R.drawable.tv_queer_eye"
+    },
+    {
+      "title": "Russian Doll",
+      "type": "Tv Series",
+      "description": "On Nadia's 36th birthday she is struck by a car and killed while leaving her party. In an instant she is alive again and transported back to her birthday party earlier that night. Moments later she dies again and finds herself, once again, back at her party, Nadia begins to question her sanity as she strives to unravel the mystery of her situation.",
+      "image": "R.drawable.tv_russian_doll"
+    },
+    {
+      "title": "The Chef Show",
+      "type": "Tv Series",
+      "description": "Writer, director and food enthusiast Jon Favreau and chef Roy Choi explore food in and out of the kitchen with accomplished chefs and celebrity friends.",
+      "image": "R.drawable.tv_the_chef_show"
+    },
+    {
+      "title": "Guardians of the Galaxy Vol. 2",
+      "type": "Tv Series",
+      "description": "The Good Place is a town where those who have been good throughout their lives go once they have passed away. Michael (Danson) is the architect who oversees the town--and this is the first one he has been in charge of creating. Eleanor (Bell) arrives at the Good Place and realizes they have her name right, but everything else is wrong. She isn't meant to be there at all. With the help of Chidi, her soul mate (Harper), Eleanor tries to right her wrongs, seeking to finally earn her spot in the Good Place.",
+      "image": "R.drawable.tv_the_good_place"
+    }
+  ]
+}
