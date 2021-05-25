@@ -4,61 +4,61 @@
       "title": "John Wick Chapter 3 - Parabellum",
       "type": "Movies",
       "description": "In this third installment of the adrenaline-fueled action franchise, skilled assassin John Wick (Keanu Reeves) returns with a \\$14 million price tag on his head and an army of bounty-hunting killers on his trail. After killing a member of the shadowy international assassin's guild, the High Table, John Wick is excommunicado, but the world's most ruthless hit men and women await his every turn.",
-      "image": "R.drawable.john_wick_chapter_3_parabellum"
+      "image": "john_wick_chapter_3_parabellum"
     },
     {
       "title": "Avenger - Infinity War",
       "type": "Movies",
       "description": "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment, the fate of Earth and existence has never been more uncertain.",
-      "image": "R.drawable.avenger_infinity_war"
+      "image": "avenger_infinity_war"
     },
     {
       "title": "Avenger - End Game",
       "type": "Movies",
       "description": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos's actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face",
-      "image": "R.drawable.avenger_end_game"
+      "image": "avenger_end_game"
     },
     {
       "title": "Captain Marvel",
       "type": "Movies",
       "description": "After crashing an experimental aircraft, Air Force pilot Carol Danvers is discovered by the Kree and trained as a member of the elite Starforce Military under the command of her mentor Yon-Rogg. Six years later, after escaping to Earth while under attack by the Skrulls, Danvers begins to discover there's more to her past. With help from S.H.I.E.L.D. agent Nick Fury, they set out to unravel the truth.",
-      "image": "R.drawable.captain_marvel"
+      "image": "captain_marvel"
     },
     {
       "title": "Guardians of the Galaxy Vol. 2",
       "type": "Movies",
       "description": "After saving Xandar from Ronan's wrath, the Guardians are now recognized as heroes. Now the team must help their leader Star Lord (Chris Pratt) uncover the truth behind his true heritage. Along the way, old foes turn to allies and betrayal is blooming. And the Guardians find that they are up against a devastating new menace who is out to rule the galaxy.",
-      "image": "R.drawable.guardian_of_the_galaxy_vol_2"
+      "image": "guardian_of_the_galaxy_vol_2"
     },
     {
       "title": "Spiderman - Homecoming",
       "type": "Movies",
       "description": "A young Peter Parker/Spider-Man begins to navigate his newfound identity as the web-slinging super hero Spider-Man. Thrilled by his experience with the Avengers, Peter returns home, where he lives with his Aunt May, under the watchful eye of his new mentor Tony Stark. Peter tries to fall back into his normal daily routine - distracted by thoughts of proving himself to be more than just your friendly neighborhood Spider-Man - but when the Vulture emerges as a new villain, everything that Peter holds most important will be threatened.",
-      "image": "R.drawable.tv_black_mirror"
+      "image": "tv_black_mirror"
     },
     {
       "title": "Star Wars: Episode VIII - The Last Jedi",
       "type": "Movies",
       "description": "Jedi Master-in-hiding Luke Skywalker unwillingly attempts to guide young hopeful Rey in the ways of the force, while Leia, former princess turned general, attempts to lead what is left of the Resistance away from the ruthless tyrannical grip of the First Order.",
-      "image": "R.drawable.star_wars_episode_viii_the_last_jedi"
+      "image": "star_wars_episode_viii_the_last_jedi"
     },
     {
       "title": "Terminator - Dark Fate",
       "type": "Movies",
       "description": "A young female Mexican worker, Dani Ramos, is hunted down by a virtually indestructible terminator from the future called a REV-9. However, she is protected by an enhanced human named Grace who is also from the future. They flee from the unstoppable terminator and, out of the blue, Sarah Connor helps them on the road. All three head to Laredo, Texas, where Grace has the coordinates of a possible support and where they meet a T-800 who is living in an isolated location with his family. The group teams up to try to destroy the REV-9.",
-      "image": "R.drawable.terminator_dark_fate"
+      "image": "terminator_dark_fate"
     },
     {
       "title": "The Hunger Games - Mockingjay part 1",
       "type": "Movies",
       "description": "With the Games destroyed, Katniss Everdeen, along with Gale, Finnick and Beetee, end up in the so thought \"destroyed\" District 13. Under the leadership of President Coin and the advice of her friends, Katniss becomes the \"Mockingjay\", the symbol of rebellion for the districts of Panem.",
-      "image": "R.drawable.the_hunger_games"
+      "image": "the_hunger_games"
     },
     {
       "title": "Thor - Ragnarok",
       "type": "Movies",
       "description": "Imprisoned on the other side of the universe, the mighty Thor (Chris Hemsworth) finds himself in a deadly gladiatorial contest that pits him against The Incredible Hulk (Mark Ruffalo), his former ally and fellow Avenger. Thor's quest for survival leads him in a race against time to prevent the all-powerful Hela (Cate Blanchett) from destroying his home world and the Asgardian civilization.",
-      "image": "R.drawable.thor_ragnarok"
+      "image": "thor_ragnarok"
     }
   ]
 }

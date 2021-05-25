@@ -16,8 +16,8 @@ internal class DetailViewModel(private val repository: DataRepository): ViewMode
 
     fun getFilm(): FilmModel{
         lateinit var film: FilmModel
-        val listMovie = DummyData.generateMovieDummy()
-        val listTv = DummyData.generateTvDummy()
+        val listMovie = repository.getAllMovies()
+        val listTv = repository.getAllTv()
         if (type == "Movies") {
             for (filmModel in listMovie) {
                 if (filmModel.title == title) {

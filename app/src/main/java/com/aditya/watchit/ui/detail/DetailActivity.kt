@@ -2,6 +2,7 @@ package com.aditya.watchit.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.aditya.watchit.data.DataRepository
 import com.aditya.watchit.data.FilmModel
@@ -33,8 +34,10 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun PopulateFilm(filmModel: FilmModel){
+        val imageSource: Int = resources.getIdentifier(filmModel.banner, "drawable", packageName)
+        val drawable = ContextCompat.getDrawable(this, imageSource)
         Glide.with(this)
-                .load(filmModel.banner)
+                .load(drawable)
                 .into(binding.imgDetail)
         binding.tvType.text = filmModel.type
         binding.tvDetailTitle.text = filmModel.title

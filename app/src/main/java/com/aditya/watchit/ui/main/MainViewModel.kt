@@ -6,6 +6,6 @@ import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.utils.DummyData
 
 class MainViewModel (private val repository: DataRepository): ViewModel() {
-    fun getMovieList(): List<FilmModel> = DummyData.generateMovieDummy()
-    fun getTvList(): List<FilmModel> = DummyData.generateTvDummy()
+    fun getMovieList(): List<FilmModel> = repository.getAllMovies()
+    fun getTvList(): List<FilmModel> = repository.getAllTv()
 }

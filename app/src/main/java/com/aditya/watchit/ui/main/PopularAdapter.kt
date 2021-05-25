@@ -1,7 +1,10 @@
 package com.aditya.watchit.ui.main
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
@@ -36,8 +39,10 @@ class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
     inner class PopularViewHolder(private val binding: PopulerFilmItemBinding):
         RecyclerView.ViewHolder(binding.root) {
             fun bind(filmModel: FilmModel){
+                val imageSource: Int = itemView.context.resources.getIdentifier(filmModel.banner, "drawable", itemView.context.packageName)
+                val drawable = ContextCompat.getDrawable(itemView.context, imageSource)
                 Glide.with(itemView.context)
-                    .load(filmModel.banner)
+                    .load(drawable)
                     .into(binding.imgPopular)
                 binding.tvTitle.text = filmModel.title
                 itemView.setOnClickListener {onItemClick.onClickedItemCallback(filmModel)}

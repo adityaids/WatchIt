@@ -1,8 +1,9 @@
-package com.aditya.watchit.utils
+package com.aditya.watchit.di
 
 import android.content.Context
 import com.aditya.watchit.data.DataRepository
 import com.aditya.watchit.data.source.remote.RemoteDataSource
+import com.aditya.watchit.utils.JsonHelper
 
 object Injection {
     fun provideRepository(context: Context): DataRepository {

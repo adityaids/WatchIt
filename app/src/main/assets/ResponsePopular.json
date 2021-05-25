@@ -4,61 +4,61 @@
       "title": "John Wick Chapter 3 - Parabellum",
       "type": "Movies",
       "description": "In this third installment of the adrenaline-fueled action franchise, skilled assassin John Wick (Keanu Reeves) returns with a \\$14 million price tag on his head and an army of bounty-hunting killers on his trail. After killing a member of the shadowy international assassin's guild, the High Table, John Wick is excommunicado, but the world's most ruthless hit men and women await his every turn.",
-      "image": "R.drawable.john_wick_chapter_3_parabellum"
+      "image": "john_wick_chapter_3_parabellum"
     },
     {
       "title": "Avenger - Infinity War",
       "type": "Movies",
       "description": "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment, the fate of Earth and existence has never been more uncertain.",
-      "image": "R.drawable.avenger_infinity_war"
+      "image": "avenger_infinity_war"
     },
     {
       "title": "Avenger - End Game",
       "type": "Movies",
       "description": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos's actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face",
-      "image": "R.drawable.avenger_end_game"
+      "image": "avenger_end_game"
     },
     {
       "title": "Captain Marvel",
       "type": "Movies",
       "description": "After crashing an experimental aircraft, Air Force pilot Carol Danvers is discovered by the Kree and trained as a member of the elite Starforce Military under the command of her mentor Yon-Rogg. Six years later, after escaping to Earth while under attack by the Skrulls, Danvers begins to discover there's more to her past. With help from S.H.I.E.L.D. agent Nick Fury, they set out to unravel the truth.",
-      "image": "R.drawable.captain_marvel"
+      "image": "captain_marvel"
     },
     {
       "title": "Guardians of the Galaxy Vol. 2",
       "type": "Movies",
       "description": "After saving Xandar from Ronan's wrath, the Guardians are now recognized as heroes. Now the team must help their leader Star Lord (Chris Pratt) uncover the truth behind his true heritage. Along the way, old foes turn to allies and betrayal is blooming. And the Guardians find that they are up against a devastating new menace who is out to rule the galaxy.",
-      "image": "R.drawable.guardian_of_the_galaxy_vol_2"
+      "image": "guardian_of_the_galaxy_vol_2"
     },
     {
       "title": "Black Mirror",
       "type": "Tv Series",
       "description": "Set in a world only minutes from our own, \"Black Mirror\" unveils how modern technologies can backfire and be used against their makers, every episode set in a slightly different reality with different characters combating different types of technologies.",
-      "image": "R.drawable.tv_black_mirror"
+      "image": "tv_black_mirror"
     },
     {
       "title": "Bojack Horseman",
       "type": "Tv Series",
       "description": "After starring in the popular sitcom \\\"Horsin' Around\\\" in the late 80s and early 90s, BoJack Horseman struggles with his deteriorating popularity, depression, addiction, and maintaining the relationships with those he cares about, but can't seem to stop hurting, all while living in the satirical, pun-filled city of Hollywood, California.",
-      "image": "R.drawable.tv_bojack_horseman"
+      "image": "tv_bojack_horseman"
     },
     {
       "title": "Breaking Bad",
       "type": "Tv Series",
       "description": "When chemistry teacher Walter White is diagnosed with Stage III cancer and given only two years to live, he decides he has nothing to lose. He lives with his teenage son, who has cerebral palsy, and his wife, in New Mexico. Determined to ensure that his family will have a secure future, Walt embarks on a career of drugs and crime. He proves to be remarkably proficient in this new world as he begins manufacturing and selling methamphetamine with one of his former students. The series tracks the impacts of a fatal diagnosis on a regular, hard working man, and explores how a fatal diagnosis affects his morality and transforms him into a major player of the drug trade.",
-      "image": "R.drawable.tv_breaking_bad"
+      "image": "tv_breaking_bad"
     },
     {
       "title": "Dear White People",
       "type": "Tv Series",
       "description": "At a predominantly white Ivy League college, a group of black students navigate various forms of racial and other types of discrimination.",
-      "image": "R.drawable.tv_dear_white_people"
+      "image": "tv_dear_white_people"
     },
     {
       "title": "Explained",
       "type": "Tv Series",
       "description": "A documentary series that looks to explore the big questions of today.",
-      "image": "R.drawable.tv_explained"
+      "image": "tv_explained"
     }
   ]
 }

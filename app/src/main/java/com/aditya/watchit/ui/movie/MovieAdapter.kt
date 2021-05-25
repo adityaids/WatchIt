@@ -2,6 +2,8 @@ package com.aditya.watchit.ui.movie
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
@@ -38,8 +40,10 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     inner class MovieViewHolder(private val binding: FilmListItemBinding):
         RecyclerView.ViewHolder(binding.root){
             fun bind(filmModel: FilmModel){
+                val imageSource: Int = itemView.context.resources.getIdentifier(filmModel.banner, "drawable", itemView.context.packageName)
+                val drawable = ContextCompat.getDrawable(itemView.context, imageSource)
                 Glide.with(itemView.context)
-                    .load(filmModel.banner)
+                    .load(drawable)
                     .into(binding.imgFilm)
                 binding.tvTitleFilm.text = filmModel.title
                 binding.tvDescriptionFilm.text = filmModel.description

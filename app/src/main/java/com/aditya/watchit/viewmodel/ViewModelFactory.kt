@@ -7,7 +7,7 @@ import com.aditya.watchit.data.DataRepository
 import com.aditya.watchit.ui.detail.DetailViewModel
 import com.aditya.watchit.ui.main.MainActivity
 import com.aditya.watchit.ui.main.MainViewModel
-import com.aditya.watchit.utils.Injection
+import com.aditya.watchit.di.Injection
 
 class ViewModelFactory private constructor(private val dataRepository: DataRepository)
     : ViewModelProvider.NewInstanceFactory() {
@@ -26,7 +26,7 @@ class ViewModelFactory private constructor(private val dataRepository: DataRepos
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         when {
-            modelClass.isAssignableFrom(MainActivity::class.java) -> {
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 return MainViewModel(dataRepository) as T
             }
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
