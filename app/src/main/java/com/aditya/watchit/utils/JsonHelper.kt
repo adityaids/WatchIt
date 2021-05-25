@@ -24,16 +24,67 @@ class JsonHelper(private val context: Context) {
 
     fun loadPopular(): List<FilmModel>{
         val filmList = ArrayList<FilmModel>()
+        try {
+            val responseObject = JSONObject(parsingFileToString("ResponsePopular.json").toString())
+            val listArray = responseObject.getJSONArray("Popular")
+            for (i in 0 until listArray.length()) {
+                val film = listArray.getJSONObject(i)
+
+                val title = film.getString("title")
+                val type = film.getString("type")
+                val description = film.getString("description")
+                val image = film.getString("image")
+
+                val filmModel = FilmModel(title, type, description, image)
+                filmList.add(filmModel)
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
         return filmList
     }
 
     fun loadMovies(): List<FilmModel>{
         val filmList = ArrayList<FilmModel>()
+        try {
+            val responseObject = JSONObject(parsingFileToString("ResponseMovie.json").toString())
+            val listArray = responseObject.getJSONArray("Popular")
+            for (i in 0 until listArray.length()) {
+                val film = listArray.getJSONObject(i)
+
+                val title = film.getString("title")
+                val type = film.getString("type")
+                val description = film.getString("description")
+                val image = film.getString("image")
+
+                val filmModel = FilmModel(title, type, description, image)
+                filmList.add(filmModel)
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
         return filmList
     }
 
     fun loadTv(): List<FilmModel>{
         val filmList = ArrayList<FilmModel>()
+        try {
+            val responseObject = JSONObject(parsingFileToString("ResponseTv.json").toString())
+            val listArray = responseObject.getJSONArray("Popular")
+            for (i in 0 until listArray.length()) {
+                val film = listArray.getJSONObject(i)
+
+                val title = film.getString("title")
+                val type = film.getString("type")
+                val description = film.getString("description")
+                val image = film.getString("image")
+
+                val filmModel = FilmModel(title, type, description, image)
+                filmList.add(filmModel)
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
         return filmList
     }
 }
