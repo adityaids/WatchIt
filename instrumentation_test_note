@@ -1,39 +1,40 @@
 Instrumentation Test Skenario
 
 - Menampilkan data popoular film
-    menunggu 2.5 detik saat simulasi load data dari remote source
+    mengambil data dari repository dengan simulasi api request
     memastikan rv_popular dalam keadaan tampil
     gulir rv_popular ke item terakhir
 
 - Menampilkan data detail popular film
-    menunggu 2.5 detik saat simulasi load data dari remote source
+    mengambil data dari repository dengan simulasi api request
     memberikan tindakan klik pada item pertama rv_popular
-    menunggu 2.5 detik saat simulasi load detail data dari remote source
     memastikan data title tampil dan sesuai data yang di harapkan
     memastikan data type tampil dan sesuai data yang di harapkan
     memastikan data description tampil dan sesuai data yang di harapkan
 
 - Menampilkan data movie
-    menunggu 2.5 detik saat simulasi load data dari remote source
+    mengambil data dari repository dengan simulasi api request
     memastikan rv_movie dalam keadaan tampil
     gulir rv_movie ke item terakhir
 
 - Menampilkan data tv series
+    mengambil data dari repository dengan simulasi api request
     memberikan tindakan klik pada tab Tv series
-    menunggu 2.5 detik saat simulasi load data dari remote source
     memastikan rv_tv_series dalam keadaan tampil
     gulir rv_tv_series ke item terakhir
 
 - Menampilkan data detail movie
-    menunggu 2.5 detik saat simulasi load data dari remote source
+    mengambil data dari repository dengan simulasi api request
     memberikan tindakan klik pada item pertama rv_movie
-    menunggu 2.5 detik saat simulasi load detail data dari remote source
+    mengambil data dari repository dengan simulasi api request
     memastikan data title tampil dan sesuai data yang di harapkan
     memastikan data type tampil dan sesuai data yang di harapkan
     memastikan data description tampil dan sesuai data yang di harapkan
 
 - Menampilkan data detail movie
+    mengambil data dari repository dengan simulasi api request
     menunggu 2.5 detik saat simulasi load data dari remote source
+    mengambil data dari repository dengan simulasi api request
     memberikan tindakan klik pada item pertama rv_tv_series
     menunggu 2.5 detik saat simulasi load detail data dari remote source
     memastikan data title tampil dan sesuai data yang di harapkan
