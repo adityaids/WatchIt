@@ -72,4 +72,11 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
         })
         return tvResults
     }
+
+    override fun getFilm(title: String, type: String): LiveData<FilmModel> {
+        val result = MutableLiveData<FilmModel>()
+        val film = remoteDataSource.getFilm(title, type)
+        result.postValue(film)
+        return result
+    }
 }

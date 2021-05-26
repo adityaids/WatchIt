@@ -7,14 +7,16 @@ import com.aditya.watchit.data.DataRepository
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.utils.DummyData
 
-internal class DetailViewModel: ViewModel() {
-    private val film = MutableLiveData<FilmModel>()
+internal class DetailViewModel(private val repository: DataRepository): ViewModel() {
+    private lateinit var title: String
+    private lateinit var type: String
 
-    fun setFilm(filmModel: FilmModel){
-        film.postValue(filmModel)
+    fun setFilm(title: String, type: String){
+        this.title = title
+        this.type = type
     }
 
     fun getFilm(): LiveData<FilmModel>{
-        return film
+        return repository.getFilm(title, type)
     }
 }

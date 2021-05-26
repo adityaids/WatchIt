@@ -34,6 +34,10 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
         handler.postDelayed({ callback.onAllTvReceived(jsonHelper.loadTv()) }, DUMMY_SERVICE_LATENCY)
     }
 
+    fun getFilm(title: String, type: String): FilmModel{
+        return jsonHelper.LoadFilm(title, type)
+    }
+
     interface LoadPopularCallback {
         fun onAllPopularReceived(popularResponse: List<FilmModel>)
     }
