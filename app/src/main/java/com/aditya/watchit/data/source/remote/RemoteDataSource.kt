@@ -3,6 +3,7 @@ package com.aditya.watchit.data.source.remote
 import android.os.Handler
 import android.os.Looper
 import com.aditya.watchit.data.FilmModel
+import com.aditya.watchit.utils.EspressoIdlingResource
 import com.aditya.watchit.utils.JsonHelper
 
 class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
@@ -22,15 +23,27 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
     }
 
     fun getPopular(callback: LoadPopularCallback) {
-        handler.postDelayed({ callback.onAllPopularReceived(jsonHelper.loadPopular()) }, DUMMY_SERVICE_LATENCY)
+        EspressoIdlingResource.increment()
+        handler.postDelayed({
+            callback.onAllPopularReceived(jsonHelper.loadPopular())
+            EspressoIdlingResource.decrement()
+         }, DUMMY_SERVICE_LATENCY)
     }
 
     fun getMovieList(callback: LoadMovieCallback) {
-        handler.postDelayed({ callback.onAllMovieReceived(jsonHelper.loadMovies()) }, DUMMY_SERVICE_LATENCY)
+        EspressoIdlingResource.increment()
+        handler.postDelayed({
+            callback.onAllMovieReceived(jsonHelper.loadMovies())
+            EspressoIdlingResource.decrement()
+         }, DUMMY_SERVICE_LATENCY)
     }
 
     fun getTvList(callback: LoadTvCallback) {
-        handler.postDelayed({ callback.onAllTvReceived(jsonHelper.loadTv()) }, DUMMY_SERVICE_LATENCY)
+        EspressoIdlingResource.increment()
+        handler.postDelayed({
+            callback.onAllTvReceived(jsonHelper.loadTv())
+            EspressoIdlingResource.decrement()
+        }, DUMMY_SERVICE_LATENCY)
     }
 
     fun getFilm(title: String, type: String): FilmModel{

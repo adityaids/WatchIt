@@ -1,0 +1,73 @@
+package com.aditya.watchit.data
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.aditya.watchit.data.source.remote.RemoteDataSource
+
+class FakeDataRepository(private val remoteDataSource: RemoteDataSource) : FilmDataSource {
+
+    override fun getAllPopular(): LiveData<List<FilmModel>> {
+        val popularResult = MutableLiveData<List<FilmModel>>()
+        remoteDataSource.getPopular(object : RemoteDataSource.LoadPopularCallback {
+            override fun onAllPopularReceived(popularResponse: List<FilmModel>) {
+                val filmList = ArrayList<FilmModel>()
+                for (response in popularResponse) {
+                    val film = FilmModel(
+                        response.title,
+                        response.type,
+                        response.description,
+                        response.banner
+                    )
+                    filmList.add(film)
+                }
+                popularResult.postValue(filmList)
+            }
+        })
+        return popularResult
+    }
+
+    override fun getAllMovies(): LiveData<List<FilmModel>> {
+        val movieResults = MutableLiveData<List<FilmModel>>()
+        remoteDataSource.getMovieList(object : RemoteDataSource.LoadMovieCallback{
+            override fun onAllMovieReceived(movieResponses: List<FilmModel>) {
+                val filmList = ArrayList<FilmModel>()
+                for (response in movieResponses) {
+                    val film = FilmModel(response.title,
+                        response.type,
+                        response.description,
+                        response.banner)
+                    filmList.add(film)
+                }
+                movieResults.postValue(filmList)
+            }
+        })
+        return movieResults
+    }
+
+    override fun getAllTv(): LiveData<List<FilmModel>> {
+        val tvResults = MutableLiveData<List<FilmModel>>()
+        remoteDataSource.getTvList(object : RemoteDataSource.LoadTvCallback{
+            override fun onAllTvReceived(tvResponse: List<FilmModel>) {
+                val filmList = ArrayList<FilmModel>()
+                for (response in tvResponse) {
+                    val film = FilmModel(
+                        response.title,
+                        response.type,
+                        response.description,
+                        response.banner
+                    )
+                    filmList.add(film)
+                }
+                tvResults.postValue(filmList)
+            }
+        })
+        return tvResults
+    }
+
+    override fun getFilm(title: String, type: String): LiveData<FilmModel> {
+        val result = MutableLiveData<FilmModel>()
+        val film = remoteDataSource.getFilm(title, type)
+        result.postValue(film)
+        return result
+    }
+}
