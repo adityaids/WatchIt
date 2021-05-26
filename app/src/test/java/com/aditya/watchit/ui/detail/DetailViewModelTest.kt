@@ -1,6 +1,7 @@
 package com.aditya.watchit.ui.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.aditya.watchit.data.DataRepository
@@ -24,22 +25,21 @@ class DetailViewModelTest {
     private lateinit var viewModel: DetailViewModel
     private val dummyMovie = DummyData.generateMovieDummy()[0]
     private val dummyTv = DummyData.generateTvDummy()[0]
+    private val titleMovie = dummyMovie.title
+    private  val typeMovie = dummyMovie.type
+    private val titleTv = dummyTv.title
+    private val typeTv = dummyTv.type
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @Before
-    fun setUp() {
-        /*
-        viewModel = DetailViewModel()
-        viewModel.setFilm(dummyMovie)
-        viewModel.setFilm(dummyTv)
-
-         */
-    }
-
     @Mock
     private lateinit var dataRepository: DataRepository
+
+    @Before
+    fun setUp() {
+        viewModel = DetailViewModel(dataRepository)
+    }
 
     @Mock
     private lateinit var observer: Observer<FilmModel>
@@ -47,36 +47,37 @@ class DetailViewModelTest {
 
     @Test
     fun getDetailMovie() {
-        val dummyMovie = DummyData.generateMovieDummy()
-        val movie = MutableLiveData<List<FilmModel>>()
-        movie.value = dummyMovie
-        /*
-        `when`(dataRepository.getAllMovies()).thenReturn(course)
-        val courseEntity = viewModel.getCourse().value as CourseEntity
-        verify(academyRepository).getCourseWithModules(courseId)
-        assertNotNull(courseEntity)
-        assertEquals(dummyCourse.courseId, courseEntity.courseId)
-        assertEquals(dummyCourse.deadline, courseEntity.deadline)
-        assertEquals(dummyCourse.description, courseEntity.description)
-        assertEquals(dummyCourse.imagePath, courseEntity.imagePath)
-        assertEquals(dummyCourse.title, courseEntity.title)
+        val film = MutableLiveData<FilmModel>()
+        film.value = dummyMovie
+        viewModel.setFilm(titleMovie, typeMovie)
+        `when`(dataRepository.getFilm(titleMovie, typeMovie)).thenReturn(film)
+        val movieItem = viewModel.getFilm().value as FilmModel
+        verify(dataRepository).getFilm(titleMovie, typeMovie)
+        assertNotNull(movieItem)
+        assertEquals(dummyMovie.title, movieItem.title)
+        assertEquals(dummyMovie.type, movieItem.type)
+        assertEquals(dummyMovie.description, movieItem.description)
+        assertEquals(dummyMovie.banner, movieItem.banner)
 
-        viewModel.getCourse().observeForever(courseObserver)
-        verify(courseObserver).onChanged(dummyCourse)
-
-         */
+        viewModel.getFilm().observeForever(observer)
+        verify(observer).onChanged(dummyMovie)
     }
 
     @Test
     fun getDetailTv(){
-        /*
-        viewModel.setFilm(dummyTv)
-        val tv = viewModel.getFilm()
-        Assert.assertNotNull(tv)
-        assertEquals(dummyTv.title, tv.title)
-        assertEquals(dummyTv.type, tv.type)
-        assertEquals(dummyTv.description, tv.description)
-        assertEquals(dummyTv.banner, tv.banner)
-         */
+        val film = MutableLiveData<FilmModel>()
+        film.value = dummyTv
+        viewModel.setFilm(titleTv, typeTv)
+        `when`(dataRepository.getFilm(titleTv, typeTv)).thenReturn(film)
+        val tvItem = viewModel.getFilm().value as FilmModel
+        verify(dataRepository).getFilm(titleTv, typeTv)
+        assertNotNull(tvItem)
+        assertEquals(dummyTv.title, tvItem.title)
+        assertEquals(dummyTv.type, tvItem.type)
+        assertEquals(dummyTv.description, tvItem.description)
+        assertEquals(dummyTv.banner, tvItem.banner)
+
+        viewModel.getFilm().observeForever(observer)
+        verify(observer).onChanged(dummyTv)
     }
 }
