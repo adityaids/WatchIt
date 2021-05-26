@@ -1,10 +1,9 @@
 package com.aditya.watchit.ui.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.aditya.watchit.data.DataRepository
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.databinding.ActivityDetailBinding
 import com.aditya.watchit.viewmodel.ViewModelFactory
@@ -29,10 +28,10 @@ class DetailActivity : AppCompatActivity() {
            filmModel = intent.getParcelableExtra<FilmModel>(EXTRA_DATA) as FilmModel
             detailViewModel.setFilm(filmModel.title, filmModel.type)
         }
-        detailViewModel.getFilm().observe(this, ::PopulateFilm)
+        detailViewModel.getFilm().observe(this, ::populateFilm)
     }
 
-    private fun PopulateFilm(filmModel: FilmModel){
+    private fun populateFilm(filmModel: FilmModel){
         val imageSource: Int = resources.getIdentifier(filmModel.banner, "drawable", packageName)
         val drawable = ContextCompat.getDrawable(this, imageSource)
         Glide.with(this)

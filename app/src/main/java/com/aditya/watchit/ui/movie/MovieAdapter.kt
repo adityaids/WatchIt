@@ -2,7 +2,6 @@ package com.aditya.watchit.ui.movie
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.watchit.data.FilmModel

@@ -2,7 +2,6 @@ package com.aditya.watchit.data.source.remote
 
 import android.os.Handler
 import android.os.Looper
-import androidx.lifecycle.LiveData
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.utils.JsonHelper
 
@@ -35,7 +34,7 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
     }
 
     fun getFilm(title: String, type: String): FilmModel{
-        return jsonHelper.LoadFilm(title, type)
+        return jsonHelper.loadFilm(title, type)
     }
 
     interface LoadPopularCallback {

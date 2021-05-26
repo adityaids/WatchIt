@@ -1,6 +1,5 @@
 package com.aditya.watchit.utils
 
-import com.aditya.watchit.R
 import com.aditya.watchit.data.FilmModel
 
 object DummyData {

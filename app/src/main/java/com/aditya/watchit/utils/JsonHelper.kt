@@ -87,7 +87,7 @@ class JsonHelper(private val context: Context) {
         }
         return filmList
     }
-    fun LoadFilm(title: String, type: String): FilmModel{
+    fun loadFilm(title: String, type: String): FilmModel{
         lateinit var film: FilmModel
         if (type == "Movies") {
             val listMovie = loadMovies()
