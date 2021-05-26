@@ -1,36 +1,20 @@
 package com.aditya.watchit.ui.detail
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aditya.watchit.data.DataRepository
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.utils.DummyData
 
-internal class DetailViewModel(private val repository: DataRepository): ViewModel() {
-    private lateinit var title: String
-    private lateinit var type: String
+internal class DetailViewModel: ViewModel() {
+    private val film = MutableLiveData<FilmModel>()
 
-    fun setTitle(name: String, filmType: String){
-        this.title = name
-        this.type = filmType
+    fun setFilm(filmModel: FilmModel){
+        film.postValue(filmModel)
     }
 
-    fun getFilm(): FilmModel{
-        lateinit var film: FilmModel
-        val listMovie = repository.getAllMovies()
-        val listTv = repository.getAllTv()
-        if (type == "Movies") {
-            for (filmModel in listMovie) {
-                if (filmModel.title == title) {
-                    film = filmModel
-                }
-            }
-        } else {
-            for (filmModel in listTv) {
-                if (filmModel.title == title) {
-                    film = filmModel
-                }
-            }
-        }
+    fun getFilm(): LiveData<FilmModel>{
         return film
     }
 }

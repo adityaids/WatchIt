@@ -2,6 +2,7 @@ package com.aditya.watchit.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,14 +30,18 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.elevation = 0f
 
         val factory = ViewModelFactory.getInstance(this)
+        binding.pgsBar.visibility = View.VISIBLE
         mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
         binding.rvPopular.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
             adapter = popularAdapter
         }
-        val popularList = mainViewModel.getMovieList()
-        popularAdapter.setPopularFilm(popularList)
+        mainViewModel.getPopularList().observe(this, {
+            binding.pgsBar.visibility = View.GONE
+            popularAdapter.setPopularFilm(it)
+            popularAdapter.notifyDataSetChanged()
+        })
 
         popularAdapter.setOnItemClick(object : OnClickedItem{
             override fun onClickedItemCallback(filmModel: FilmModel) {

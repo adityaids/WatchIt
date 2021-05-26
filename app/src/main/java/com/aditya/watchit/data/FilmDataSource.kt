@@ -1,7 +1,9 @@
 package com.aditya.watchit.data
 
+import androidx.lifecycle.LiveData
+
 interface FilmDataSource {
-    fun getAllPopular(): ArrayList<FilmModel>
-    fun getAllMovies(): ArrayList<FilmModel>
-    fun getAllTv(): ArrayList<FilmModel>
+    fun getAllPopular(): LiveData<List<FilmModel>>
+    fun getAllMovies(): LiveData<List<FilmModel>>
+    fun getAllTv(): LiveData<List<FilmModel>>
 }

@@ -27,10 +27,9 @@ class DetailActivity : AppCompatActivity() {
         detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
         if (intent.hasExtra(EXTRA_DATA)) {
            filmModel = intent.getParcelableExtra<FilmModel>(EXTRA_DATA) as FilmModel
-            detailViewModel.setTitle(filmModel.title, filmModel.type)
-            val film = detailViewModel.getFilm()
-            PopulateFilm(film)
+            detailViewModel.setFilm(filmModel)
         }
+        detailViewModel.getFilm().observe(this, ::PopulateFilm)
     }
 
     private fun PopulateFilm(filmModel: FilmModel){

@@ -35,9 +35,13 @@ class MovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
+            binding.pgsBar.visibility = View.VISIBLE
             val viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
-            val listMovie = viewModel.getMovieList()
-            movieAdapter.setListFilm(listMovie)
+            viewModel.getMovieList().observe(viewLifecycleOwner,{
+                binding.pgsBar.visibility = View.GONE
+                movieAdapter.setListFilm(it)
+                movieAdapter.notifyDataSetChanged()
+            })
 
             movieAdapter.setOnItemClickedCallback(object : OnClickedItem{
                 override fun onClickedItemCallback(filmModel: FilmModel) {

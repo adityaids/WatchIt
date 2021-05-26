@@ -37,8 +37,13 @@ class TvSeriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
             val viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
-            val tvList = viewModel.getTvList()
-            tvSeriesAdapter.setTvSeries(tvList)
+            binding.pgsBar.visibility = View.VISIBLE
+            viewModel.getTvList().observe(viewLifecycleOwner,{
+                binding.pgsBar.visibility = View.GONE
+                tvSeriesAdapter.setTvSeries(it)
+                tvSeriesAdapter.notifyDataSetChanged()
+            })
+
             tvSeriesAdapter.setOnItemClickCallback(object : OnClickedItem{
                 override fun onClickedItemCallback(filmModel: FilmModel) {
                     val intent = Intent(context, DetailActivity::class.java).apply {
