@@ -46,8 +46,8 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
         }, DUMMY_SERVICE_LATENCY)
     }
 
-    fun getFilm(title: String, type: String): FilmModel{
-        return jsonHelper.loadFilm(title, type)
+    fun getFilm(title: String, type: String, callback: LoadFilmCallback){
+        callback.onFilmReceived(jsonHelper.loadFilm(title, type))
     }
 
     interface LoadPopularCallback {
@@ -59,5 +59,7 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
     interface LoadTvCallback {
         fun onAllTvReceived(tvResponse: List<FilmModel>)
     }
-
+    interface LoadFilmCallback{
+        fun onFilmReceived(filmModel: FilmModel)
+    }
 }

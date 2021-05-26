@@ -1,6 +1,5 @@
 package com.aditya.watchit.ui.main
 
-import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -11,7 +10,6 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import androidx.test.platform.app.InstrumentationRegistry
 import com.aditya.watchit.R
 import com.aditya.watchit.utils.DummyData
 import com.aditya.watchit.utils.EspressoIdlingResource

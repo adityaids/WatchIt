@@ -66,8 +66,11 @@ class FakeDataRepository(private val remoteDataSource: RemoteDataSource) : FilmD
 
     override fun getFilm(title: String, type: String): LiveData<FilmModel> {
         val result = MutableLiveData<FilmModel>()
-        val film = remoteDataSource.getFilm(title, type)
-        result.postValue(film)
+        remoteDataSource.getFilm(title, type, object : RemoteDataSource.LoadFilmCallback{
+            override fun onFilmReceived(filmModel: FilmModel) {
+                result.postValue(filmModel)
+            }
+        })
         return result
     }
 }
