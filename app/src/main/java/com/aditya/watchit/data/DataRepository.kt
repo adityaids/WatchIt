@@ -2,6 +2,7 @@ package com.aditya.watchit.data
 
 import androidx.lifecycle.LiveData
 import com.aditya.watchit.data.source.local.LocalDataSource
+import com.aditya.watchit.data.source.local.entity.FavoritEntity
 import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.data.source.local.entity.PopularEntity
 import com.aditya.watchit.data.source.remote.ApiResponse
@@ -125,4 +126,13 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
             }
         }.asLiveData()
     }
+
+    override fun getAllFavorit(favoritEntity: FavoritEntity): LiveData<List<FavoritEntity>> =
+        localDataSource.getFavorit()
+
+    override fun setFavorit(favoritEntity: FavoritEntity) =
+        localDataSource.addToFavorit(favoritEntity)
+
+    override fun getFavorit(title: String, type: String): LiveData<FavoritEntity> =
+        localDataSource.getFilmFavorit(title, type)
 }
