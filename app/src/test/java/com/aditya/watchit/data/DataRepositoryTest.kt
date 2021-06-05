@@ -19,7 +19,7 @@ class DataRepositoryTest{
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
     private val remote = mock(RemoteDataSource::class.java)
-    private val dataRepository = FakeDataRepository(remote)
+    //private val dataRepository = FakeDataRepository(remote)
 
     private val popularResponses = DummyData.generatePopularDummy()
     private val movieResponses = DummyData.generateMovieDummy()
