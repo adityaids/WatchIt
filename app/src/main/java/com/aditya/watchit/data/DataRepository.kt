@@ -88,7 +88,7 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
 
 
             override fun createCall(): LiveData<ApiResponse<List<FilmModel>>> =
-                remoteDataSource.getMovieList()
+                remoteDataSource.getTvList()
 
 
             override fun saveCallResult(data: List<FilmModel>) {

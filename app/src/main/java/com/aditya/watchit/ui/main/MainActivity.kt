@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         popularAdapter.setOnItemClick(object : PopularAdapter.OnClickPopularFilm{
             override fun onClickItem(popularEntity: PopularEntity) {
                 val intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
-                    putExtra(DetailActivity.EXTRA_DATA, popularEntity)
+                    putExtra(DetailActivity.EXTRA_DATA_POPULAR, popularEntity)
                 }
                 startActivity(intent)
             }

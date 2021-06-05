@@ -21,12 +21,12 @@ internal class DetailViewModel(private val repository: DataRepository): ViewMode
         return repository.getFilm(title, type)
     }
 
-    fun addToFavorit(filmModel: FilmModel){
+    fun addToFavorit(filmEntity: FilmEntity){
         val result = FavoritEntity(
-            filmModel.title,
-            filmModel.type,
-            filmModel.description,
-            filmModel.banner
+            filmEntity.title,
+            filmEntity.type,
+            filmEntity.description,
+            filmEntity.banner
         )
         repository.setFavorit(result)
     }

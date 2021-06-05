@@ -11,7 +11,7 @@ import com.aditya.watchit.data.source.local.entity.PopularEntity.Companion.TABLE
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = TABLE_NAME, primaryKeys = [COLUMN_TITLE, COLUMN_TYPE])
+@Entity(tableName = TABLE_NAME)
 class PopularEntity(
 
     @PrimaryKey

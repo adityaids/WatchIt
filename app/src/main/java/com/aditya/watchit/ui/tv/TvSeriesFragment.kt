@@ -59,9 +59,9 @@ class TvSeriesFragment : Fragment() {
             })
 
             tvSeriesAdapter.setOnItemClickCallback(object : OnClickedItem{
-                override fun onClickedItemCallback(filmModel: FilmEntity) {
+                override fun onClickedItemCallback(filmEntity: FilmEntity) {
                     val intent = Intent(context, DetailActivity::class.java).apply {
-                        putExtra(DetailActivity.EXTRA_DATA, filmModel)
+                        putExtra(DetailActivity.EXTRA_DATA, filmEntity)
                     }
                     startActivity(intent)
                 }

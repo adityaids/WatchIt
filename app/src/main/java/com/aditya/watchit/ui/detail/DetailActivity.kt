@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.source.local.entity.FilmEntity
+import com.aditya.watchit.data.source.local.entity.PopularEntity
 import com.aditya.watchit.databinding.ActivityDetailBinding
 import com.aditya.watchit.viewmodel.ViewModelFactory
 import com.aditya.watchit.vo.Status
@@ -15,11 +16,11 @@ import com.bumptech.glide.Glide
 
 class DetailActivity : AppCompatActivity() {
     companion object{
+        const val EXTRA_DATA_POPULAR: String = "extra_data_popular"
         const val EXTRA_DATA: String = "extra_data"
     }
     private lateinit var binding: ActivityDetailBinding
     private lateinit var detailViewModel: DetailViewModel
-    private lateinit var filmModel: FilmModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,9 +29,13 @@ class DetailActivity : AppCompatActivity() {
 
         val factory = ViewModelFactory.getInstance(this)
         detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
+        if (intent.hasExtra(EXTRA_DATA_POPULAR)) {
+           val popular = intent.getParcelableExtra<PopularEntity>(EXTRA_DATA_POPULAR) as PopularEntity
+            detailViewModel.setFilm(popular.title, popular.type)
+        }
         if (intent.hasExtra(EXTRA_DATA)) {
-           filmModel = intent.getParcelableExtra<FilmModel>(EXTRA_DATA) as FilmModel
-            detailViewModel.setFilm(filmModel.title, filmModel.type)
+            val film = intent.getParcelableExtra<FilmEntity>(EXTRA_DATA) as FilmEntity
+            detailViewModel.setFilm(film.title, film.type)
         }
         detailViewModel.getFilm().observe(this, {
             if (it != null) {
@@ -47,24 +52,24 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
         })
-        binding.btnFavorit.setOnClickListener { addToFavorit(filmModel) }
     }
 
     private fun populateFilm(result: FilmEntity?){
         if (result != null) {
-            val imageSource: Int = resources.getIdentifier(filmModel.banner, "drawable", packageName)
+            val imageSource: Int = resources.getIdentifier(result.banner, "drawable", packageName)
             val drawable = ContextCompat.getDrawable(this, imageSource)
             Glide.with(this)
                 .load(drawable)
                 .into(binding.imgDetail)
-            binding.tvType.text = filmModel.type
-            binding.tvDetailTitle.text = filmModel.title
-            binding.tvDetailDescription.text = filmModel.description
+            binding.tvType.text = result.type
+            binding.tvDetailTitle.text = result.title
+            binding.tvDetailDescription.text = result.description
+            binding.btnFavorit.setOnClickListener { addToFavorit(result) }
         }
     }
 
-    private fun addToFavorit(filmModel: FilmModel){
-        detailViewModel.addToFavorit(filmModel)
+    private fun addToFavorit(filmEntity: FilmEntity){
+        detailViewModel.addToFavorit(filmEntity)
         Toast.makeText(this, "Added To Favorit", Toast.LENGTH_LONG).show()
     }
 }
