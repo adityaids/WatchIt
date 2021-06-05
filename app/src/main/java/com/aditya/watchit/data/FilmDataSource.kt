@@ -1,10 +1,13 @@
 package com.aditya.watchit.data
 
 import androidx.lifecycle.LiveData
+import com.aditya.watchit.data.source.local.entity.FilmEntity
+import com.aditya.watchit.data.source.local.entity.PopularEntity
+import com.aditya.watchit.vo.Resource
 
 interface FilmDataSource {
-    fun getAllPopular(): LiveData<List<FilmModel>>
-    fun getAllMovies(): LiveData<List<FilmModel>>
-    fun getAllTv(): LiveData<List<FilmModel>>
-    fun getFilm(title: String, type: String): LiveData<FilmModel>
+    fun getAllPopular(): LiveData<Resource<List<PopularEntity>>>
+    fun getAllMovies(type: String): LiveData<Resource<List<FilmEntity>>>
+    fun getAllTv(type: String): LiveData<Resource<List<FilmEntity>>>
+    fun getFilm(title: String, type: String): LiveData<Resource<FilmEntity>>
 }

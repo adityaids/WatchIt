@@ -54,11 +54,13 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
         return result
     }
 
-    fun getFilm(title: String, type: String, callback: LoadFilmCallback){
-        callback.onFilmReceived(jsonHelper.loadFilm(title, type))
-    }
-
-    interface LoadFilmCallback{
-        fun onFilmReceived(filmModel: FilmModel)
+    fun getFilm(title: String, type: String): LiveData<ApiResponse<FilmModel>>{
+        EspressoIdlingResource.increment()
+        val result = MutableLiveData<ApiResponse<FilmModel>>()
+        handler.postDelayed({
+            result.value = ApiResponse.success(jsonHelper.loadFilm(title, type))
+            EspressoIdlingResource.decrement()
+        }, DUMMY_SERVICE_LATENCY)
+        return result
     }
 }

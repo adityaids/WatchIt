@@ -5,21 +5,23 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.aditya.watchit.data.source.local.entity.FavoritEntity
+import com.aditya.watchit.data.source.local.entity.FilmEntity
+import com.aditya.watchit.data.source.local.entity.PopularEntity
 
-@Database(entities = [FavoritEntity::class], exportSchema = false, version = 1)
-abstract class FavoritDatabase: RoomDatabase() {
+@Database(entities = [FavoritEntity::class, FilmEntity::class, PopularEntity::class], exportSchema = false, version = 1)
+abstract class SourceDatabase: RoomDatabase() {
     abstract fun favoritDao(): FavoritDao
 
     companion object {
 
         @Volatile
-        private var INSTANCE: FavoritDatabase? = null
+        private var INSTANCE: SourceDatabase? = null
 
-        fun getInstance(context: Context): FavoritDatabase =
+        fun getInstance(context: Context): SourceDatabase =
             INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(
                     context.applicationContext,
-                    FavoritDatabase::class.java,
+                    SourceDatabase::class.java,
                     "favorit"
                 ).build().apply {
                     INSTANCE = this
