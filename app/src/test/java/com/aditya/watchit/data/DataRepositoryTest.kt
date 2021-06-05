@@ -28,7 +28,7 @@ class DataRepositoryTest{
     private val filmTitle = filmMovie.title
     private val filmType = filmMovie.type
 
-    @Test
+    /*@Test
     fun getAllPopular() {
         doAnswer { invocation ->
             (invocation.arguments[0] as RemoteDataSource.LoadPopularCallback)
@@ -39,9 +39,9 @@ class DataRepositoryTest{
         verify(remote).getPopular(any())
         assertNotNull(popularEntities)
         assertEquals(popularResponses.size.toLong(), popularEntities.size.toLong())
-    }
+    }*/
 
-    @Test
+    /*@Test
     fun getAllMovies() {
         doAnswer { invocation ->
             (invocation.arguments[0] as RemoteDataSource.LoadMovieCallback)
@@ -78,5 +78,5 @@ class DataRepositoryTest{
         verify(remote).getFilm(eq(filmTitle), eq(filmType), any())
         assertNotNull(film)
         assertEquals(filmMovie.title, film.title)
-    }
+    }*/
 }

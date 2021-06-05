@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.aditya.watchit.data.source.remote.RemoteDataSource
 
-class FakeDataRepository(private val remoteDataSource: RemoteDataSource) : FilmDataSource {
 
+class FakeDataRepository/*(private val remoteDataSource: RemoteDataSource) : FilmDataSource*/ {
+    /*
     override fun getAllPopular(): LiveData<List<FilmModel>> {
         val popularResult = MutableLiveData<List<FilmModel>>()
         remoteDataSource.getPopular(object : RemoteDataSource.LoadPopularCallback {
@@ -72,5 +73,5 @@ class FakeDataRepository(private val remoteDataSource: RemoteDataSource) : FilmD
             }
         })
         return result
-    }
+    }*/
 }
