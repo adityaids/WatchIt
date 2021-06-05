@@ -3,14 +3,17 @@ package com.aditya.watchit.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
+import com.aditya.watchit.data.source.local.entity.PopularEntity
 import com.aditya.watchit.databinding.ActivityMainBinding
 import com.aditya.watchit.ui.detail.DetailActivity
 import com.aditya.watchit.viewmodel.ViewModelFactory
+import com.aditya.watchit.vo.Status
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,15 +41,26 @@ class MainActivity : AppCompatActivity() {
             adapter = popularAdapter
         }
         mainViewModel.getPopularList().observe(this, {
-            binding.pgsBar.visibility = View.GONE
-            popularAdapter.setPopularFilm(it)
-            popularAdapter.notifyDataSetChanged()
+            if (it != null) {
+                when (it.status) {
+                    Status.LOADING -> binding.pgsBar.visibility = View.VISIBLE
+                    Status.SUCCESS -> {
+                        binding.pgsBar.visibility = View.GONE
+                        popularAdapter.setPopularFilm(it.data)
+                        popularAdapter.notifyDataSetChanged()
+                    }
+                    Status.ERROR -> {
+                        binding.pgsBar.visibility = View.GONE
+                        Toast.makeText(this, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         })
 
-        popularAdapter.setOnItemClick(object : OnClickedItem{
-            override fun onClickedItemCallback(filmModel: FilmModel) {
+        popularAdapter.setOnItemClick(object : PopularAdapter.OnClickPopularFilm{
+            override fun onClickItem(popularEntity: PopularEntity) {
                 val intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
-                    putExtra(DetailActivity.EXTRA_DATA, filmModel)
+                    putExtra(DetailActivity.EXTRA_DATA, popularEntity)
                 }
                 startActivity(intent)
             }

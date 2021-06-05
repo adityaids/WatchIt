@@ -22,8 +22,6 @@ class LocalDataSource private constructor(private val favoritDao: FavoritDao) {
 
     fun getFilm(title: String, type: String): LiveData<FilmEntity> = favoritDao.getFilm(title, type)
 
-    fun getFilmFavorit(title: String, type: String): LiveData<FavoritEntity> = favoritDao.getFilmFavorit(title, type)
-
     fun addToFavorit(favoritEntity: FavoritEntity) = favoritDao.addToFavorit(favoritEntity)
 
     fun insertToPopular(popular: List<PopularEntity>) = favoritDao.insertToPopular(popular)

@@ -1,5 +1,6 @@
 package com.aditya.watchit.data.source.local.entity
 
+import android.os.Parcelable
 import android.provider.BaseColumns
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
@@ -8,7 +9,9 @@ import androidx.room.PrimaryKey
 import com.aditya.watchit.data.source.local.entity.FavoritEntity.Companion.COLUMN_TITLE
 import com.aditya.watchit.data.source.local.entity.FavoritEntity.Companion.COLUMN_TYPE
 import com.aditya.watchit.data.source.local.entity.FavoritEntity.Companion.TABLE_NAME
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = TABLE_NAME)
 class FavoritEntity(
 
@@ -28,7 +31,7 @@ class FavoritEntity(
     @NonNull
     @ColumnInfo(name = COLUMN_BANNER)
     var banner: String
-) {
+):Parcelable{
     companion object {
         const val TABLE_NAME = "favorit"
         const val COLUMN_TITLE = "title"

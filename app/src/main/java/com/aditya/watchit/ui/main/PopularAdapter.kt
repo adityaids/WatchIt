@@ -6,19 +6,20 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
+import com.aditya.watchit.data.source.local.entity.PopularEntity
 import com.aditya.watchit.databinding.PopulerFilmItemBinding
 import com.bumptech.glide.Glide
 
 class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
-    private lateinit var onItemClick: OnClickedItem
-    private val listPopulerFilm = ArrayList<FilmModel>()
+    private lateinit var onItemClick: OnClickPopularFilm
+    private val listPopulerFilm = ArrayList<PopularEntity>()
 
-    fun setPopularFilm(data: List<FilmModel>?){
+    fun setPopularFilm(data: List<PopularEntity>?){
         if (data == null) return
         this.listPopulerFilm.clear()
         this.listPopulerFilm.addAll(data)
     }
-    fun setOnItemClick(onClickedItem: OnClickedItem){
+    fun setOnItemClick(onClickedItem: OnClickPopularFilm){
         this.onItemClick = onClickedItem
     }
 
@@ -36,14 +37,18 @@ class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
 
     inner class PopularViewHolder(private val binding: PopulerFilmItemBinding):
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(filmModel: FilmModel){
-                val imageSource: Int = itemView.context.resources.getIdentifier(filmModel.banner, "drawable", itemView.context.packageName)
+            fun bind(result: PopularEntity){
+                val imageSource: Int = itemView.context.resources.getIdentifier(result.banner, "drawable", itemView.context.packageName)
                 val drawable = ContextCompat.getDrawable(itemView.context, imageSource)
                 Glide.with(itemView.context)
                     .load(drawable)
                     .into(binding.imgPopular)
-                binding.tvTitle.text = filmModel.title
-                itemView.setOnClickListener {onItemClick.onClickedItemCallback(filmModel)}
+                binding.tvTitle.text = result.title
+                itemView.setOnClickListener {onItemClick.onClickItem(result)}
             }
+    }
+
+    interface OnClickPopularFilm{
+        fun onClickItem(popularEntity: PopularEntity)
     }
 }

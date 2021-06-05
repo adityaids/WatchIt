@@ -1,5 +1,6 @@
 package com.aditya.watchit.data.source.local.entity
 
+import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -7,7 +8,9 @@ import androidx.room.PrimaryKey
 import com.aditya.watchit.data.source.local.entity.FilmEntity.Companion.COLUMN_TITLE
 import com.aditya.watchit.data.source.local.entity.FilmEntity.Companion.COLUMN_TYPE
 import com.aditya.watchit.data.source.local.entity.FilmEntity.Companion.TABLE_NAME
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = TABLE_NAME, primaryKeys = [COLUMN_TITLE, COLUMN_TYPE])
 class FilmEntity(
 
@@ -27,7 +30,7 @@ class FilmEntity(
     @NonNull
     @ColumnInfo(name = COLUMN_BANNER)
     var banner: String
-) {
+):Parcelable {
     companion object {
         const val TABLE_NAME = "film"
         const val COLUMN_TITLE = "title"

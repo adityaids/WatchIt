@@ -6,14 +6,15 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
+import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.databinding.FilmListItemBinding
 import com.bumptech.glide.Glide
 
 class TvSeriesAdapter: RecyclerView.Adapter<TvSeriesAdapter.TvViewHolder>(){
-    private val listTvSeries = ArrayList<FilmModel>()
+    private val listTvSeries = ArrayList<FilmEntity>()
     private lateinit var onItemClick: OnClickedItem
 
-    fun setTvSeries(data: List<FilmModel>?){
+    fun setTvSeries(data: List<FilmEntity>?){
         if (data != null) {
             this.listTvSeries.clear()
             this.listTvSeries.addAll(data)
@@ -36,7 +37,7 @@ class TvSeriesAdapter: RecyclerView.Adapter<TvSeriesAdapter.TvViewHolder>(){
 
     inner class TvViewHolder(private val binding: FilmListItemBinding):
         RecyclerView.ViewHolder(binding.root){
-            fun bind(filmModel: FilmModel){
+            fun bind(filmModel: FilmEntity){
                 val imageSource: Int = itemView.context.resources.getIdentifier(filmModel.banner, "drawable", itemView.context.packageName)
                 val drawable = AppCompatResources.getDrawable(itemView.context, imageSource)
                 Glide.with(itemView.context)

@@ -5,14 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
+import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.databinding.FragmentMovieBinding
 import com.aditya.watchit.ui.detail.DetailActivity
 import com.aditya.watchit.ui.main.MainViewModel
+import com.aditya.watchit.vo.Status
 
 class MovieFragment : Fragment() {
     private lateinit var binding: FragmentMovieBinding
@@ -38,15 +41,26 @@ class MovieFragment : Fragment() {
             binding.pgsBar.visibility = View.VISIBLE
             val viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
             viewModel.getMovieList().observe(viewLifecycleOwner,{
-                binding.pgsBar.visibility = View.GONE
-                movieAdapter.setListFilm(it)
-                movieAdapter.notifyDataSetChanged()
+                if (it != null) {
+                    when (it.status) {
+                        Status.LOADING -> binding.pgsBar.visibility = View.VISIBLE
+                        Status.SUCCESS -> {
+                            binding.pgsBar.visibility = View.GONE
+                            movieAdapter.setListFilm(it.data)
+                            movieAdapter.notifyDataSetChanged()
+                        }
+                        Status.ERROR -> {
+                            binding.pgsBar.visibility = View.GONE
+                            Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             })
 
             movieAdapter.setOnItemClickedCallback(object : OnClickedItem{
-                override fun onClickedItemCallback(filmModel: FilmModel) {
+                override fun onClickedItemCallback(filmEntity: FilmEntity) {
                     val intent = Intent(context, DetailActivity::class.java).apply {
-                        putExtra(DetailActivity.EXTRA_DATA, filmModel)
+                        putExtra(DetailActivity.EXTRA_DATA, filmEntity)
                     }
                     startActivity(intent)
                 }

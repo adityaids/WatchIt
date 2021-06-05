@@ -131,8 +131,8 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
         localDataSource.getFavorit()
 
     override fun setFavorit(favoritEntity: FavoritEntity) =
-        localDataSource.addToFavorit(favoritEntity)
+        appExecutor.diskIO().execute{localDataSource.addToFavorit(favoritEntity)}
 
-    override fun getFavorit(title: String, type: String): LiveData<FavoritEntity> =
-        localDataSource.getFilmFavorit(title, type)
+    override fun deleteFavorit(favoritEntity: FavoritEntity) =
+        localDataSource.deleteFavorit(favoritEntity)
 }
