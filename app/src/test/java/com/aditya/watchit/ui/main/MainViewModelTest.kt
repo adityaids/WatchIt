@@ -31,95 +31,70 @@ class MainViewModelTest{
     @Mock
     private lateinit var dataRepository: DataRepository
 
+    @Mock
+    private lateinit var pagedListFilm: PagedList<FilmEntity>
+
+    @Mock
+    private lateinit var pagedListPopular: PagedList<PopularEntity>
+
     @Before
     fun setUp(){
         viewModel = MainViewModel(dataRepository)
     }
 
     @Mock
-    private lateinit var observer: Observer<Resource<List<FilmEntity>>>
+    private lateinit var observer: Observer<Resource<PagedList<FilmEntity>>>
 
     @Mock
-    private lateinit var popularObserver: Observer<Resource<List<PopularEntity>>>
-/*
+    private lateinit var popularObserver: Observer<Resource<PagedList<PopularEntity>>>
+
     @Test
     fun testGetMovieList() {
-        val dummyMovie = Resource.success(DummyData.generateMovieDummy())
+        val dummyMovie = Resource.success(pagedListFilm)
+        `when`(dummyMovie.data?.size).thenReturn(5)
         val movie = MutableLiveData<Resource<PagedList<FilmEntity>>>()
-        val dummyList = ArrayList<FilmEntity>()
-        for (film in dummyMovie.data!!){
-            val mFilm = FilmEntity(
-                film.title,
-                film.type,
-                film.description,
-                film.banner
-            )
-            dummyList.add(mFilm)
-        }
-        val dummyFilm = Resource.success(dummyList.toList())
-        movie.value = dummyFilm
+        movie.value = dummyMovie
 
         `when`(dataRepository.getAllMovies("Movies")).thenReturn(movie)
         val movieEntities = viewModel.getMovieList().value?.data
         verify(dataRepository).getAllMovies("Movies")
         assertNotNull(movieEntities)
-        assertEquals(10, movieEntities?.size)
+        assertEquals(5, movieEntities?.size)
 
         viewModel.getMovieList().observeForever(observer)
-        verify(observer).onChanged(dummyFilm)
+        verify(observer).onChanged(dummyMovie)
     }
 
     @Test
     fun testGetTvList() {
-        val dummyTv = Resource.success(DummyData.generateTvDummy())
-        val tv = MutableLiveData<Resource<List<FilmEntity>>>()
-        val dummyList = ArrayList<FilmEntity>()
-        for (film in dummyTv.data!!){
-            val mFilm = FilmEntity(
-                film.title,
-                film.type,
-                film.description,
-                film.banner
-            )
-            dummyList.add(mFilm)
-        }
-        val dummyFilm = Resource.success(dummyList.toList())
-        tv.value = dummyFilm
+        val dummyTv = Resource.success(pagedListFilm)
+        `when`(dummyTv.data?.size).thenReturn(5)
+        val tv = MutableLiveData<Resource<PagedList<FilmEntity>>>()
+        tv.value = dummyTv
         `when`(dataRepository.getAllTv("Tv Series")).thenReturn(tv)
         val tvEntities = viewModel.getTvList().value?.data
         verify(dataRepository).getAllTv("Tv Series")
         assertNotNull(tvEntities)
-        assertEquals(10, tvEntities?.size)
+        assertEquals(5, tvEntities?.size)
 
         viewModel.getTvList().observeForever(observer)
-        verify(observer).onChanged(dummyFilm)
+        verify(observer).onChanged(dummyTv)
     }
 
     @Test
     fun testGetPopularList(){
-        val dummyPopular = Resource.success(DummyData.generatePopularDummy())
-        val popular = MutableLiveData<Resource<List<PopularEntity>>>()
-        val dummyList = ArrayList<PopularEntity>()
-        for (film in dummyPopular.data!!){
-            val mFilm = PopularEntity(
-                film.title,
-                film.type,
-                film.description,
-                film.banner
-            )
-            dummyList.add(mFilm)
-        }
-        val dummyFilm = Resource.success(dummyList.toList())
-        popular.value = dummyFilm
+        val dummyPopular = Resource.success(pagedListPopular)
+        `when`(dummyPopular.data?.size).thenReturn(5)
+        val popular = MutableLiveData<Resource<PagedList<PopularEntity>>>()
+        popular.value = dummyPopular
 
         `when`(dataRepository.getAllPopular()).thenReturn(popular)
         val popularEntities = viewModel.getPopularList().value?.data
         verify(dataRepository).getAllPopular()
         assertNotNull(popularEntities)
-        assertEquals(10, popularEntities?.size)
+        assertEquals(5, popularEntities?.size)
 
         viewModel.getPopularList().observeForever(popularObserver)
-        verify(popularObserver).onChanged(dummyFilm)
+        verify(popularObserver).onChanged(dummyPopular)
     }
- */
 }
