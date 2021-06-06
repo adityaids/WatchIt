@@ -87,9 +87,4 @@ class DetailViewModelTest {
         viewModel.getFilm().observeForever(observer)
         verify(observer).onChanged(dummyFilm)
     }
-
-    @Test
-    fun addToFavorit(){
-
-    }
 }

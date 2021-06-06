@@ -58,8 +58,4 @@ class FavoritViewModelTest {
         viewModel.getAllFavorit().observeForever(observer)
         Mockito.verify(observer).onChanged(dummyfavorit)
     }
-
-    fun deleteFavorit(){
-
-    }
 }
