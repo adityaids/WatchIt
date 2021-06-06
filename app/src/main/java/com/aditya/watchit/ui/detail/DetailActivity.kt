@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.aditya.watchit.R
 import com.aditya.watchit.data.FilmModel
+import com.aditya.watchit.data.source.local.entity.FavoritEntity
 import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.data.source.local.entity.PopularEntity
 import com.aditya.watchit.databinding.ActivityDetailBinding
@@ -20,12 +21,14 @@ import com.bumptech.glide.Glide
 class DetailActivity : AppCompatActivity() {
     companion object{
         const val EXTRA_DATA_POPULAR: String = "extra_data_popular"
+        const val EXTRA_DATA_FAVORIT: String = "extra_data_favorit"
         const val EXTRA_DATA: String = "extra_data"
     }
     private lateinit var binding: ActivityDetailBinding
     private lateinit var detailViewModel: DetailViewModel
     private var menu: Menu? = null
     private lateinit var mFilm: FilmEntity
+    private var isFavorit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,11 @@ class DetailActivity : AppCompatActivity() {
         if (intent.hasExtra(EXTRA_DATA_POPULAR)) {
            val popular = intent.getParcelableExtra<PopularEntity>(EXTRA_DATA_POPULAR) as PopularEntity
             detailViewModel.setFilm(popular.title, popular.type)
+        }
+        if (intent.hasExtra(EXTRA_DATA_FAVORIT)) {
+            val film = intent.getParcelableExtra<FavoritEntity>(EXTRA_DATA_FAVORIT) as FavoritEntity
+            detailViewModel.setFilm(film.title, film.type)
+            isFavorit = film.isFavorit
         }
         if (intent.hasExtra(EXTRA_DATA)) {
             val film = intent.getParcelableExtra<FilmEntity>(EXTRA_DATA) as FilmEntity
@@ -53,7 +61,7 @@ class DetailActivity : AppCompatActivity() {
                     Status.LOADING -> binding.pgsBar.visibility = View.VISIBLE
                     Status.SUCCESS -> {
                         binding.pgsBar.visibility = View.GONE
-                        setFavoritState(false)
+                        setFavoritState(isFavorit)
                         populateFilm(it.data)
                     }
                     Status.ERROR -> {
@@ -68,7 +76,6 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_favorit) {
-            setFavoritState(true)
             detailViewModel.addToFavorit(mFilm)
             Toast.makeText(this, "Added To Favorit", Toast.LENGTH_LONG).show()
             return true

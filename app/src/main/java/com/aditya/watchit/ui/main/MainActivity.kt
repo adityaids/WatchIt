@@ -12,6 +12,7 @@ import com.aditya.watchit.data.OnClickedItem
 import com.aditya.watchit.data.source.local.entity.PopularEntity
 import com.aditya.watchit.databinding.ActivityMainBinding
 import com.aditya.watchit.ui.detail.DetailActivity
+import com.aditya.watchit.ui.favorit.FavoritActivity
 import com.aditya.watchit.viewmodel.ViewModelFactory
 import com.aditya.watchit.vo.Status
 
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val factory = ViewModelFactory.getInstance(this)
         binding.pgsBar.visibility = View.VISIBLE
         mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
+
         binding.rvPopular.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
@@ -65,5 +67,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+
+        binding.btnToFavorit.setOnClickListener {
+            val intent = Intent(this@MainActivity, FavoritActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
