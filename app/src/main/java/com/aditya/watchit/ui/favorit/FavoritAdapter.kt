@@ -29,6 +29,8 @@ class FavoritAdapter: PagedListAdapter<FavoritEntity,FavoritAdapter.FavoritViewH
         this.onItemClick = onClickedItem
     }
 
+    fun getSwipedData(swipedPosition: Int): FavoritEntity? = getItem(swipedPosition)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritViewHolder {
         val binding = FilmListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FavoritViewHolder(binding)

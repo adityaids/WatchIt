@@ -157,5 +157,5 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
         appExecutor.diskIO().execute{localDataSource.addToFavorit(favoritEntity)}
 
     override fun deleteFavorit(favoritEntity: FavoritEntity) =
-        localDataSource.deleteFavorit(favoritEntity)
+        appExecutor.diskIO().execute{localDataSource.deleteFavorit(favoritEntity)}
 }

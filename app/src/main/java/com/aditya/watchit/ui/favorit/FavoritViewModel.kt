@@ -11,4 +11,5 @@ class FavoritViewModel(private val repository: DataRepository): ViewModel() {
 
     fun getAllFavorit(): LiveData<PagedList<FavoritEntity>> = repository.getAllFavorit()
     fun deleteFavorit(favoritEntity: FavoritEntity) = repository.deleteFavorit(favoritEntity)
+    fun undoDelete(favoritEntity: FavoritEntity) = repository.setFavorit(favoritEntity)
 }
