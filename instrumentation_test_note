@@ -1,5 +1,16 @@
 Instrumentation Test Skenario
 
+- Menampilkan Data Favorit (apabila sudah pernah menyimpan)
+    Menekan Button Favorit
+    Masuk Ke Activity Favorit
+    Menampilkan Data Favorit
+    Menekan salah satu itm
+    Membuka Halaman Detail
+    memastikan data title tampil dan sesuai data yang di harapkan
+    memastikan data type tampil dan sesuai data yang di harapkan
+    memastikan data description tampil dan sesuai data yang di harapkan
+    Menekan Button Kembali
+
 - Menampilkan data popoular film
     mengambil data dari repository dengan simulasi api request
     memastikan rv_popular dalam keadaan tampil
@@ -33,10 +44,8 @@ Instrumentation Test Skenario
 
 - Menampilkan data detail movie
     mengambil data dari repository dengan simulasi api request
-    menunggu 2.5 detik saat simulasi load data dari remote source
     mengambil data dari repository dengan simulasi api request
     memberikan tindakan klik pada item pertama rv_tv_series
-    menunggu 2.5 detik saat simulasi load detail data dari remote source
     memastikan data title tampil dan sesuai data yang di harapkan
     memastikan data type tampil dan sesuai data yang di harapkan
     memastikan data description tampil dan sesuai data yang di harapkan
