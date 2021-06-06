@@ -1,6 +1,8 @@
 package com.aditya.watchit.data
 
 import androidx.lifecycle.LiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.aditya.watchit.data.source.local.LocalDataSource
 import com.aditya.watchit.data.source.local.entity.FavoritEntity
 import com.aditya.watchit.data.source.local.entity.FilmEntity
@@ -23,12 +25,17 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
                 }
     }
 
-    override fun getAllPopular(): LiveData<Resource<List<PopularEntity>>> {
-        return object : NetworkBoundResource<List<PopularEntity>, List<FilmModel>>(appExecutor){
-            override fun loadFromDB(): LiveData<List<PopularEntity>> =
-                localDataSource.getAllPopular()
-
-            override fun shouldFetch(data: List<PopularEntity>?): Boolean =
+    override fun getAllPopular(): LiveData<Resource<PagedList<PopularEntity>>> {
+        return object : NetworkBoundResource<PagedList<PopularEntity>, List<FilmModel>>(appExecutor){
+            override fun loadFromDB(): LiveData<PagedList<PopularEntity>>{
+                val config = PagedList.Config.Builder()
+                    .setEnablePlaceholders(false)
+                    .setInitialLoadSizeHint(4)
+                    .setPageSize(4)
+                    .build()
+                return LivePagedListBuilder(localDataSource.getAllPopular(), config).build()
+            }
+            override fun shouldFetch(data: PagedList<PopularEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<FilmModel>>> =
@@ -48,13 +55,18 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
         }.asLiveData()
     }
 
-    override fun getAllMovies(type: String): LiveData<Resource<List<FilmEntity>>> {
-        return object : NetworkBoundResource<List<FilmEntity>, List<FilmModel>>(appExecutor){
-            override fun loadFromDB(): LiveData<List<FilmEntity>> =
-                localDataSource.getFilmByType(type)
+    override fun getAllMovies(type: String): LiveData<Resource<PagedList<FilmEntity>>> {
+        return object : NetworkBoundResource<PagedList<FilmEntity>, List<FilmModel>>(appExecutor){
+            override fun loadFromDB(): LiveData<PagedList<FilmEntity>> {
+                val config = PagedList.Config.Builder()
+                    .setEnablePlaceholders(false)
+                    .setInitialLoadSizeHint(4)
+                    .setPageSize(4)
+                    .build()
+                return LivePagedListBuilder(localDataSource.getFilmByType(type), config).build()
+            }
 
-
-            override fun shouldFetch(data: List<FilmEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<FilmEntity>?): Boolean =
                 data == null || data.isEmpty()
 
 
@@ -77,13 +89,18 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
         }.asLiveData()
     }
 
-    override fun getAllTv(type: String): LiveData<Resource<List<FilmEntity>>> {
-        return object : NetworkBoundResource<List<FilmEntity>, List<FilmModel>>(appExecutor){
-            override fun loadFromDB(): LiveData<List<FilmEntity>> =
-                localDataSource.getFilmByType(type)
+    override fun getAllTv(type: String): LiveData<Resource<PagedList<FilmEntity>>> {
+        return object : NetworkBoundResource<PagedList<FilmEntity>, List<FilmModel>>(appExecutor){
+            override fun loadFromDB(): LiveData<PagedList<FilmEntity>> {
+                val config = PagedList.Config.Builder()
+                    .setEnablePlaceholders(false)
+                    .setInitialLoadSizeHint(4)
+                    .setPageSize(4)
+                    .build()
+                return LivePagedListBuilder(localDataSource.getFilmByType(type), config).build()
+            }
 
-
-            override fun shouldFetch(data: List<FilmEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<FilmEntity>?): Boolean =
                 data == null || data.isEmpty()
 
 
@@ -127,8 +144,14 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
         }.asLiveData()
     }
 
-    override fun getAllFavorit(): LiveData<List<FavoritEntity>> =
-        localDataSource.getFavorit()
+    override fun getAllFavorit(): LiveData<PagedList<FavoritEntity>> {
+        val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setInitialLoadSizeHint(4)
+            .setPageSize(4)
+            .build()
+        return LivePagedListBuilder(localDataSource.getFavorit(), config).build()
+    }
 
     override fun setFavorit(favoritEntity: FavoritEntity) =
         appExecutor.diskIO().execute{localDataSource.addToFavorit(favoritEntity)}

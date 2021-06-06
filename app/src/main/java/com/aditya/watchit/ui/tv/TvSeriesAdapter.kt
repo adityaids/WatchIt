@@ -3,6 +3,8 @@ package com.aditya.watchit.ui.tv
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
@@ -10,16 +12,19 @@ import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.databinding.FilmListItemBinding
 import com.bumptech.glide.Glide
 
-class TvSeriesAdapter: RecyclerView.Adapter<TvSeriesAdapter.TvViewHolder>(){
-    private val listTvSeries = ArrayList<FilmEntity>()
-    private lateinit var onItemClick: OnClickedItem
-
-    fun setTvSeries(data: List<FilmEntity>?){
-        if (data != null) {
-            this.listTvSeries.clear()
-            this.listTvSeries.addAll(data)
+class TvSeriesAdapter: PagedListAdapter<FilmEntity, TvSeriesAdapter.TvViewHolder>(DIFF_CALLBACK){
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FilmEntity>() {
+            override fun areItemsTheSame(oldItem: FilmEntity, newItem: FilmEntity): Boolean {
+                return oldItem.title == newItem.title
+            }
+            override fun areContentsTheSame(oldItem: FilmEntity, newItem: FilmEntity): Boolean {
+                return oldItem.title == newItem.title
+            }
         }
     }
+    private lateinit var onItemClick: OnClickedItem
+
     fun setOnItemClickCallback(onClickedItem: OnClickedItem){
         this.onItemClick = onClickedItem
     }
@@ -29,11 +34,11 @@ class TvSeriesAdapter: RecyclerView.Adapter<TvSeriesAdapter.TvViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: TvViewHolder, position: Int) {
-        val tvSeries = listTvSeries[position]
-        holder.bind(tvSeries)
+        val tvSeries = getItem(position)
+        if (tvSeries != null) {
+            holder.bind(tvSeries)
+        }
     }
-
-    override fun getItemCount(): Int = listTvSeries.size
 
     inner class TvViewHolder(private val binding: FilmListItemBinding):
         RecyclerView.ViewHolder(binding.root){

@@ -20,19 +20,12 @@ import com.aditya.watchit.vo.Status
 
 class TvSeriesFragment : Fragment() {
     private lateinit var binding: FragmentTvSeriesBinding
-    private lateinit var tvSeriesAdapter: TvSeriesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTvSeriesBinding.inflate(layoutInflater, container, false)
-        tvSeriesAdapter = TvSeriesAdapter()
-        binding.rvTvSeries.apply {
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-            adapter = tvSeriesAdapter
-        }
         return binding.root
     }
 
@@ -41,13 +34,14 @@ class TvSeriesFragment : Fragment() {
         if (activity != null) {
             val viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
             binding.pgsBar.visibility = View.VISIBLE
+            val tvSeriesAdapter = TvSeriesAdapter()
             viewModel.getTvList().observe(viewLifecycleOwner,{
                 if (it != null) {
                     when (it.status) {
                         Status.LOADING -> binding.pgsBar.visibility = View.VISIBLE
                         Status.SUCCESS -> {
                             binding.pgsBar.visibility = View.GONE
-                            tvSeriesAdapter.setTvSeries(it.data)
+                            tvSeriesAdapter.submitList(it.data)
                             tvSeriesAdapter.notifyDataSetChanged()
                         }
                         Status.ERROR -> {
@@ -55,6 +49,11 @@ class TvSeriesFragment : Fragment() {
                             Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
                         }
                     }
+                }
+                binding.rvTvSeries.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    setHasFixedSize(true)
+                    adapter = tvSeriesAdapter
                 }
             })
 

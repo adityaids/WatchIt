@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                     Status.LOADING -> binding.pgsBar.visibility = View.VISIBLE
                     Status.SUCCESS -> {
                         binding.pgsBar.visibility = View.GONE
-                        popularAdapter.setPopularFilm(it.data)
+                        popularAdapter.submitList(it.data)
                         popularAdapter.notifyDataSetChanged()
                     }
                     Status.ERROR -> {

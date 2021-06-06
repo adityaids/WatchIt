@@ -22,7 +22,7 @@ abstract class SourceDatabase: RoomDatabase() {
                 Room.databaseBuilder(
                     context.applicationContext,
                     SourceDatabase::class.java,
-                    "favorit"
+                    "db_film"
                 ).build().apply {
                     INSTANCE = this
                 }

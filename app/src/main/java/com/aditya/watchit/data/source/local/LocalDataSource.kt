@@ -1,6 +1,7 @@
 package com.aditya.watchit.data.source.local
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import com.aditya.watchit.data.source.local.entity.FavoritEntity
 import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.data.source.local.entity.PopularEntity
@@ -14,11 +15,11 @@ class LocalDataSource private constructor(private val favoritDao: FavoritDao) {
             INSTANCE ?: LocalDataSource(favoritDao)
     }
 
-    fun getAllPopular(): LiveData<List<PopularEntity>> = favoritDao.getPopularList()
+    fun getAllPopular(): DataSource.Factory<Int, PopularEntity> = favoritDao.getPopularList()
 
-    fun getFavorit(): LiveData<List<FavoritEntity>> = favoritDao.getFavorit()
+    fun getFavorit(): DataSource.Factory<Int, FavoritEntity> = favoritDao.getFavorit()
 
-    fun getFilmByType(type: String): LiveData<List<FilmEntity>> = favoritDao.getFilmByType(type)
+    fun getFilmByType(type: String): DataSource.Factory<Int, FilmEntity> = favoritDao.getFilmByType(type)
 
     fun getFilm(title: String, type: String): LiveData<FilmEntity> = favoritDao.getFilm(title, type)
 

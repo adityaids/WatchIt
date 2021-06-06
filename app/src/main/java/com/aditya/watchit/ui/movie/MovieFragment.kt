@@ -19,25 +19,19 @@ import com.aditya.watchit.vo.Status
 
 class MovieFragment : Fragment() {
     private lateinit var binding: FragmentMovieBinding
-    private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMovieBinding.inflate(layoutInflater, container, false)
-        movieAdapter = MovieAdapter()
-        binding.rvMovie.apply {
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-            adapter = movieAdapter
-        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
+            val movieAdapter = MovieAdapter()
             binding.pgsBar.visibility = View.VISIBLE
             val viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
             viewModel.getMovieList().observe(viewLifecycleOwner,{
@@ -46,7 +40,7 @@ class MovieFragment : Fragment() {
                         Status.LOADING -> binding.pgsBar.visibility = View.VISIBLE
                         Status.SUCCESS -> {
                             binding.pgsBar.visibility = View.GONE
-                            movieAdapter.setListFilm(it.data)
+                            movieAdapter.submitList(it.data)
                             movieAdapter.notifyDataSetChanged()
                         }
                         Status.ERROR -> {
@@ -54,6 +48,11 @@ class MovieFragment : Fragment() {
                             Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
                         }
                     }
+                }
+                binding.rvMovie.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    setHasFixedSize(true)
+                    adapter = movieAdapter
                 }
             })
 

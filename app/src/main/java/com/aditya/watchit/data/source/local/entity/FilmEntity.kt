@@ -11,10 +11,9 @@ import com.aditya.watchit.data.source.local.entity.FilmEntity.Companion.TABLE_NA
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = TABLE_NAME)
+@Entity(tableName = TABLE_NAME, primaryKeys = [COLUMN_TITLE, COLUMN_TYPE])
 class FilmEntity(
 
-    @PrimaryKey
     @NonNull
     @ColumnInfo(name = COLUMN_TITLE)
     var title: String,

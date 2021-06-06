@@ -3,23 +3,28 @@ package com.aditya.watchit.ui.movie
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
 import com.aditya.watchit.data.source.local.entity.FilmEntity
+import com.aditya.watchit.data.source.local.entity.PopularEntity
 import com.aditya.watchit.databinding.FilmListItemBinding
 import com.bumptech.glide.Glide
 
-class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
-    private lateinit var onItemClick: OnClickedItem
-    private val listMovie = ArrayList<FilmEntity>()
-
-    fun setListFilm(data: List<FilmEntity>?){
-        if (data != null) {
-            this.listMovie.clear()
-            this.listMovie.addAll(data)
+class MovieAdapter: PagedListAdapter<FilmEntity, MovieAdapter.MovieViewHolder>(DIFF_CALLBACK) {
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FilmEntity>() {
+            override fun areItemsTheSame(oldItem: FilmEntity, newItem: FilmEntity): Boolean {
+                return oldItem.title == newItem.title
+            }
+            override fun areContentsTheSame(oldItem: FilmEntity, newItem: FilmEntity): Boolean {
+                return oldItem.title == newItem.title
+            }
         }
     }
+    private lateinit var onItemClick: OnClickedItem
 
     fun setOnItemClickedCallback(onClickedItem: OnClickedItem){
         this.onItemClick = onClickedItem
@@ -31,11 +36,11 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie = listMovie[position]
-        holder.bind(movie)
+        val movie = getItem(position)
+        if (movie != null) {
+            holder.bind(movie)
+        }
     }
-
-    override fun getItemCount(): Int = listMovie.size
 
     inner class MovieViewHolder(private val binding: FilmListItemBinding):
         RecyclerView.ViewHolder(binding.root){

@@ -4,7 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.aditya.watchit.data.DataRepository
-import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.utils.DummyData
 import com.aditya.watchit.vo.Resource

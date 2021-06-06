@@ -3,6 +3,8 @@ package com.aditya.watchit.ui.main
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
@@ -10,14 +12,18 @@ import com.aditya.watchit.data.source.local.entity.PopularEntity
 import com.aditya.watchit.databinding.PopulerFilmItemBinding
 import com.bumptech.glide.Glide
 
-class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
+class PopularAdapter: PagedListAdapter<PopularEntity, PopularAdapter.PopularViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClick: OnClickPopularFilm
-    private val listPopulerFilm = ArrayList<PopularEntity>()
 
-    fun setPopularFilm(data: List<PopularEntity>?){
-        if (data == null) return
-        this.listPopulerFilm.clear()
-        this.listPopulerFilm.addAll(data)
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<PopularEntity>() {
+            override fun areItemsTheSame(oldItem: PopularEntity, newItem: PopularEntity): Boolean {
+                return oldItem.title == newItem.title
+            }
+            override fun areContentsTheSame(oldItem: PopularEntity, newItem: PopularEntity): Boolean {
+                return oldItem.title == newItem.title
+            }
+        }
     }
     fun setOnItemClick(onClickedItem: OnClickPopularFilm){
         this.onItemClick = onClickedItem
@@ -29,11 +35,11 @@ class PopularAdapter: RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PopularViewHolder, position: Int) {
-        val film = listPopulerFilm[position]
-        holder.bind(film)
+        val film = getItem(position)
+        if (film != null) {
+            holder.bind(film)
+        }
     }
-
-    override fun getItemCount(): Int = listPopulerFilm.size
 
     inner class PopularViewHolder(private val binding: PopulerFilmItemBinding):
         RecyclerView.ViewHolder(binding.root) {
