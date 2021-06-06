@@ -11,7 +11,7 @@ interface FilmDataSource {
     fun getAllMovies(type: String): LiveData<Resource<List<FilmEntity>>>
     fun getAllTv(type: String): LiveData<Resource<List<FilmEntity>>>
     fun getFilm(title: String, type: String): LiveData<Resource<FilmEntity>>
-    fun getAllFavorit(favoritEntity: FavoritEntity): LiveData<List<FavoritEntity>>
+    fun getAllFavorit(): LiveData<List<FavoritEntity>>
     fun setFavorit(favoritEntity: FavoritEntity)
     fun deleteFavorit(favoritEntity: FavoritEntity)
 }

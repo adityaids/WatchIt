@@ -9,13 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WatchIt">
-        <activity android:name=".ui.detail.DetailActivity"
+        <activity android:name=".ui.favorit.FavoritActivity"></activity>
+        <activity
+            android:name=".ui.detail.DetailActivity"
             android:parentActivityName=".ui.main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.main.MainActivity" />
         </activity>
-        <activity android:name=".ui.splash.SplashscreenActivity"
+        <activity
+            android:name=".ui.splash.SplashscreenActivity"
             android:theme="@style/fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity"
-            android:theme="@style/fullscreen"/>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:theme="@style/fullscreen" />
     </application>
 
 </manifest>

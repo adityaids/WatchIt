@@ -26,7 +26,8 @@ internal class DetailViewModel(private val repository: DataRepository): ViewMode
             filmEntity.title,
             filmEntity.type,
             filmEntity.description,
-            filmEntity.banner
+            filmEntity.banner,
+                true
         )
         repository.setFavorit(result)
     }

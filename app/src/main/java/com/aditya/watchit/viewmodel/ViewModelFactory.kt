@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.aditya.watchit.data.DataRepository
 import com.aditya.watchit.di.Injection
 import com.aditya.watchit.ui.detail.DetailViewModel
+import com.aditya.watchit.ui.favorit.FavoritViewModel
 import com.aditya.watchit.ui.main.MainViewModel
 
 class ViewModelFactory private constructor(private val dataRepository: DataRepository)
@@ -30,6 +31,9 @@ class ViewModelFactory private constructor(private val dataRepository: DataRepos
             }
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
                 DetailViewModel(dataRepository) as T
+            }
+            modelClass.isAssignableFrom(FavoritViewModel::class.java) -> {
+                FavoritViewModel(dataRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

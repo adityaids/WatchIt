@@ -127,7 +127,7 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
         }.asLiveData()
     }
 
-    override fun getAllFavorit(favoritEntity: FavoritEntity): LiveData<List<FavoritEntity>> =
+    override fun getAllFavorit(): LiveData<List<FavoritEntity>> =
         localDataSource.getFavorit()
 
     override fun setFavorit(favoritEntity: FavoritEntity) =

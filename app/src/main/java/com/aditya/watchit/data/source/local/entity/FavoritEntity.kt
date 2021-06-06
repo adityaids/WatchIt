@@ -30,7 +30,11 @@ class FavoritEntity(
 
     @NonNull
     @ColumnInfo(name = COLUMN_BANNER)
-    var banner: String
+    var banner: String,
+
+    @NonNull
+    @ColumnInfo
+    var isFavorit: Boolean = false
 ):Parcelable{
     companion object {
         const val TABLE_NAME = "favorit"
@@ -38,5 +42,6 @@ class FavoritEntity(
         const val COLUMN_TYPE = "type"
         const val COLUMN_DESCRIPTION = "description"
         const val COLUMN_BANNER = "banner"
+        const val COLUMN_IS_FAVORIT = "is_favorit"
     }
 }

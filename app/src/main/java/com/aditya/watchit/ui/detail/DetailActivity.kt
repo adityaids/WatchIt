@@ -1,11 +1,14 @@
 package com.aditya.watchit.ui.detail
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.aditya.watchit.R
 import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.data.source.local.entity.PopularEntity
@@ -21,6 +24,8 @@ class DetailActivity : AppCompatActivity() {
     }
     private lateinit var binding: ActivityDetailBinding
     private lateinit var detailViewModel: DetailViewModel
+    private var menu: Menu? = null
+    private lateinit var mFilm: FilmEntity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +42,18 @@ class DetailActivity : AppCompatActivity() {
             val film = intent.getParcelableExtra<FilmEntity>(EXTRA_DATA) as FilmEntity
             detailViewModel.setFilm(film.title, film.type)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_detail, menu)
+        this.menu = menu
         detailViewModel.getFilm().observe(this, {
             if (it != null) {
                 when (it.status) {
                     Status.LOADING -> binding.pgsBar.visibility = View.VISIBLE
                     Status.SUCCESS -> {
                         binding.pgsBar.visibility = View.GONE
+                        setFavoritState(false)
                         populateFilm(it.data)
                     }
                     Status.ERROR -> {
@@ -52,10 +63,22 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
         })
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_favorit) {
+            setFavoritState(true)
+            detailViewModel.addToFavorit(mFilm)
+            Toast.makeText(this, "Added To Favorit", Toast.LENGTH_LONG).show()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun populateFilm(result: FilmEntity?){
         if (result != null) {
+            mFilm = result
             val imageSource: Int = resources.getIdentifier(result.banner, "drawable", packageName)
             val drawable = ContextCompat.getDrawable(this, imageSource)
             Glide.with(this)
@@ -64,12 +87,16 @@ class DetailActivity : AppCompatActivity() {
             binding.tvType.text = result.type
             binding.tvDetailTitle.text = result.title
             binding.tvDetailDescription.text = result.description
-            binding.btnFavorit.setOnClickListener { addToFavorit(result) }
         }
     }
 
-    private fun addToFavorit(filmEntity: FilmEntity){
-        detailViewModel.addToFavorit(filmEntity)
-        Toast.makeText(this, "Added To Favorit", Toast.LENGTH_LONG).show()
+    private fun setFavoritState(state: Boolean) {
+        if (menu == null) return
+        val menuItem = menu?.findItem(R.id.action_favorit)
+        if (state) {
+            menuItem?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_full)
+        } else {
+            menuItem?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorit_white)
+        }
     }
 }
