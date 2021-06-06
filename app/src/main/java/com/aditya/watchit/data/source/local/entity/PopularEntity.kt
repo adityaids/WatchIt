@@ -5,8 +5,6 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.aditya.watchit.data.source.local.entity.PopularEntity.Companion.COLUMN_TITLE
-import com.aditya.watchit.data.source.local.entity.PopularEntity.Companion.COLUMN_TYPE
 import com.aditya.watchit.data.source.local.entity.PopularEntity.Companion.TABLE_NAME
 import kotlinx.parcelize.Parcelize
 

@@ -6,8 +6,6 @@ import androidx.core.content.ContextCompat
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.aditya.watchit.data.FilmModel
-import com.aditya.watchit.data.OnClickedItem
 import com.aditya.watchit.data.source.local.entity.PopularEntity
 import com.aditya.watchit.databinding.PopulerFilmItemBinding
 import com.bumptech.glide.Glide

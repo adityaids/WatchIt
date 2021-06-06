@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.aditya.watchit.R
-import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.source.local.entity.FavoritEntity
 import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.data.source.local.entity.PopularEntity

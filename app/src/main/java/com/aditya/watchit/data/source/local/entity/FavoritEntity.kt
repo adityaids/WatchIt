@@ -1,13 +1,10 @@
 package com.aditya.watchit.data.source.local.entity
 
 import android.os.Parcelable
-import android.provider.BaseColumns
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.aditya.watchit.data.source.local.entity.FavoritEntity.Companion.COLUMN_TITLE
-import com.aditya.watchit.data.source.local.entity.FavoritEntity.Companion.COLUMN_TYPE
 import com.aditya.watchit.data.source.local.entity.FavoritEntity.Companion.TABLE_NAME
 import kotlinx.parcelize.Parcelize
 

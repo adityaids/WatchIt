@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.OnClickedItem
 import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.databinding.FragmentTvSeriesBinding

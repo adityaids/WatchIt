@@ -3,7 +3,6 @@ package com.aditya.watchit.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.aditya.watchit.data.DataRepository
-import com.aditya.watchit.data.FilmModel
 import com.aditya.watchit.data.source.local.entity.FavoritEntity
 import com.aditya.watchit.data.source.local.entity.FilmEntity
 import com.aditya.watchit.vo.Resource

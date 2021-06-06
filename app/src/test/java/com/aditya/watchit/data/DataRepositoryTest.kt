@@ -12,16 +12,13 @@ import com.aditya.watchit.utils.DummyData
 import com.aditya.watchit.utils.LiveDataTestUtil
 import com.aditya.watchit.utils.PagedListUtil
 import com.aditya.watchit.vo.Resource
-import org.junit.Rule
-import org.junit.Test
-import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.doAnswer
-import com.nhaarman.mockitokotlin2.eq
-import org.mockito.Mockito.mock
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
+import org.junit.Rule
+import org.junit.Test
 import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
 
 class DataRepositoryTest{
 

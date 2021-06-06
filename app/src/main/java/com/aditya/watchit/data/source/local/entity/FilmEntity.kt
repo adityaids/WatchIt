@@ -4,7 +4,6 @@ import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.aditya.watchit.data.source.local.entity.FilmEntity.Companion.COLUMN_TITLE
 import com.aditya.watchit.data.source.local.entity.FilmEntity.Companion.COLUMN_TYPE
 import com.aditya.watchit.data.source.local.entity.FilmEntity.Companion.TABLE_NAME
