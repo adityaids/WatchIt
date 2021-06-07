@@ -78,7 +78,7 @@ class DataRepositoryTest{
         val dummyFilm = Resource.success(mFilm)
         movie.value = dummyFilm
         `when`(dataRepository.getFilm(filmMovie.title, filmMovie.type)).thenReturn(movie)
-        val film = LiveDataTestUtil.getValue(dataRepository.getFilm(filmMovie.title, filmMovie.type))
+        val film = Resource.success(dataRepository.getFilm(filmMovie.title, filmMovie.type))
         verify(local).getFilm(filmMovie.title, filmMovie.type)
         assertNotNull(film)
         assertEquals(filmMovie.title, movie.value?.data?.title)
