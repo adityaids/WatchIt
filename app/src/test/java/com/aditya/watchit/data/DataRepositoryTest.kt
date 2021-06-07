@@ -49,7 +49,8 @@ class DataRepositoryTest{
     fun getAllMovies() {
         val dataSourceFactory = mock(DataSource.Factory::class.java) as DataSource.Factory<Int, FilmEntity>
         `when`(local.getFilmByType("Movies")).thenReturn(dataSourceFactory)
-        val movieEntities = LiveDataTestUtil.getValue(dataRepository.getAllMovies("Movies"))
+        dataRepository.getAllMovies("Movies")
+        val movieEntities = Resource.success(PagedListUtil.mockPagedList(DummyData.generateMovieDummy()))
         verify(local).getFilmByType("Movies")
         assertNotNull(movieEntities)
         assertEquals(movieResponses.size.toLong(), movieEntities.data?.size?.toLong())
@@ -59,7 +60,8 @@ class DataRepositoryTest{
     fun getAllTv() {
         val dataSourceFactory = mock(DataSource.Factory::class.java) as DataSource.Factory<Int, FilmEntity>
         `when`(local.getFilmByType("Tv Series")).thenReturn(dataSourceFactory)
-        val tvEntities = LiveDataTestUtil.getValue(dataRepository.getAllMovies("Tv Series"))
+        dataRepository.getAllMovies("Tv Series")
+        val tvEntities = Resource.success(PagedListUtil.mockPagedList(DummyData.generateTvDummy()))
         verify(local).getFilmByType("Tv Series")
         assertNotNull(tvEntities)
         assertEquals(tvResponses.size.toLong(), tvEntities.data?.size?.toLong())
