@@ -9,10 +9,13 @@ import com.aditya.watchit.data.source.local.room.FavoritDao
 
 class LocalDataSource private constructor(private val favoritDao: FavoritDao) {
     companion object {
+        @Volatile
         private var INSTANCE: LocalDataSource? = null
 
         fun getInstance(favoritDao: FavoritDao): LocalDataSource =
-            INSTANCE ?: LocalDataSource(favoritDao)
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: LocalDataSource(favoritDao).also { INSTANCE = it }
+            }
     }
 
     fun getAllPopular(): DataSource.Factory<Int, PopularEntity> = favoritDao.getPopularList()
